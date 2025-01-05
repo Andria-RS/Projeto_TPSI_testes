@@ -1,0 +1,46 @@
+.sidebar {
+  width: 200px;
+  height: calc(100vh - 80px); /* Altura total da tela menos o navbar */
+  border: 1px solid #d3d3d3;
+  border-radius: 10px;
+  padding: 10px;
+  background-color: #fff;
+  position: fixed; /* Fixar a sidebar */
+  right: 0; /* Posicionar à direita */
+  top: 80px; /* Altura real do heading */
+}
+.sidebar .menu-item {
+  font-size: 16px;
+  margin: 10px 0;
+  color: #000;
+  cursor: pointer;
+}
+.sidebar .menu-item:hover {
+  color: #fdb50d; /* Cor azul padrão do Bootstrap */
+}
+.sidebar .menu-item.active {
+  font-weight: bold;
+  color: #fdb50d; /* Active color */
+}
+body {
+  margin-right: 220px; /* Espaço para a sidebar */
+  padding-top: 80px;
+}
+.content {
+  margin-top: 80px; /* Altura real do heading */
+  padding: 20px;
+}
+
+.profile-img {
+  width: 120px;
+  height: 120px;
+  border-radius: 50%;
+  object-fit: cover;
+  border: 4px solid #f8f9fa;
+}
+#card_info {
+  border-radius: 10px;
+}
+.btn-edit {
+  border-radius: 20px;
+}

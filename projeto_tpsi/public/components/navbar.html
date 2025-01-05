@@ -1,0 +1,80 @@
+
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
+
+
+
+<!-- Navbar -->
+<nav class="navbar navbar-expand-lg navbar-light bg-white shadow-sm fixed-top">
+  <div class="container-fluid">
+    <a class="navbar-brand" href="#">
+      <img src="../aplicacao/assets/logo_estg.png" alt="IPVC Logo" style="height: 70px; width: auto;">
+    </a>
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarNav">
+      <ul class="navbar-nav ms-auto">
+        
+        <li class="nav-item ms-4">
+          <a class="nav-link text-gray-700 fs-5" href="../aplicacao/index.html">
+            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="currentColor" class="bi bi-house" viewBox="0 0 16 16">
+              <path fill-rule="evenodd" d="M8 .175a.5.5 0 0 1 .405.207l6 7a.5.5 0 0 1-.81.59L13 7.5V13.5a1.5 1.5 0 0 1-1.5 1.5H10a.5.5 0 0 1-.5-.5v-3.5A1.5 1.5 0 0 0 8 9H7A1.5 1.5 0 0 0 5.5 10.5V14a.5.5 0 0 1-.5.5H4a1.5 1.5 0 0 1-1.5-1.5V7.5L.405 7.98a.5.5 0 0 1-.81-.59l6-7A.5.5 0 0 1 8 .175z"/>
+            </svg>
+          </a>
+        </li>
+
+        <li class="nav-item ms-4">
+          <a class="nav-link text-gray-700 fs-5" href="../aplicacao/tarefas.html">Tarefas</a>
+        </li>
+
+        <li class="nav-item ms-4">
+          <a class="nav-link text-gray-700 fs-5" href="#">Chat</a>
+        </li>
+
+        <!-- Botão para acionar o modal de logout -->
+        <li class="nav-item ms-4">
+          <button class="btn btn-danger px-3 py-2 fs-5" data-bs-toggle="modal" onclick="openModal('logoutModal')">Sair</button>
+        </li>
+      </ul>
+    </div>
+  </div>
+</nav>
+
+<!-- Logout Modal -->
+<div class="modal fade" id="logoutModal" tabindex="-1" aria-labelledby="logoutModalLabel" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="logoutModalLabel">Tem certeza de que deseja sair?</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        Clique em "Confirmar Logout" para sair ou "Cancelar" para fechar este diálogo.
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
+        <a href="/login" class="btn btn-danger">Confirmar Logout</a>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Incluir dependências do Bootstrap -->
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
+
+
+
+
+
+
+<!--
+     <nav class="navbar navbar-expand-lg navbar-light bg-light fixed-top">
+    <div class="container-fluid">
+      <a class="navbar-brand d-flex align-items-center" href="#"> <img src="\aplicacao\assets\logo_ESTG.png" alt="Logo"  style="width: 160px; height: 70px;"></a>
+      <div>
+        <button class="btn btn-warning me-2" ><a class="btn btn-warning me-2" href="perfil.html">Perfil</a></button>
+        <button class="btn btn-warning" onclick="logout()">Sair</button>
+      </div>
+    </div>
+  </nav>-->

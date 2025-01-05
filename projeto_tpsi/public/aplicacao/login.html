@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="pt">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="../aplicacao/sytles/login.css">
+  <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+  <link href="https://cdn.jsdelivr.net/npm/remixicon@2.5.0/fonts/remixicon.css" rel="stylesheet">
+  <title>Login</title>
+  <script>
+    // Função para alternar a visibilidade da senha
+    function togglePassword() {
+      const passwordField = document.getElementById('password');
+      const toggleIcon = document.getElementById('eye-icon');
+      
+      if (passwordField.type === "password") {
+        passwordField.type = "text";
+        toggleIcon.classList.remove('ri-eye-line');
+        toggleIcon.classList.add('ri-eye-off-line');
+      } else {
+        passwordField.type = "password";
+        toggleIcon.classList.remove('ri-eye-off-line');
+        toggleIcon.classList.add('ri-eye-line');
+      }
+    }
+  </script>
+</head>
+<body>
+  <div class="container d-flex justify-content-center align-items-center">
+    <div class="card">
+      <div class="card-body">
+        <img src="../aplicacao/assets/IPVC.png" alt="Logo" class="img-fluid" style="max-width: 200px;">
+        <form onsubmit="login(event)">
+          <div class="form-group">
+            <label for="email">Email</label>
+            <div class="input-group">
+              <div class="input-group-prepend">
+                <span class="input-group-text"><i class="ri-mail-line"></i></span>
+              </div>
+              <input type="email" class="form-control" id="email" name="email" required>
+            </div>
+          </div>
+          <div class="form-group">
+            <label for="password">Senha</label>
+            <div class="input-group">
+              <div class="input-group-prepend">
+                <span class="input-group-text"><i class="ri-lock-line"></i></span>
+              </div>
+              <input type="password" class="form-control" id="password" name="password" required>
+              <div class="input-group-append">
+                <span class="input-group-text" onclick="togglePassword()" style="cursor: pointer;">
+                  <i id="eye-icon" class="ri-eye-line"></i>
+                </span>
+              </div>
+            </div>
+          </div>
+          <button type="submit" class="btn btn-primary btn-block">Entrar</button>
+          <div class="text-center mt-3">
+            <p>Não tem uma conta? <a href="/aplicacao/register.html">Registre-se</a></p>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+  
+  <script src="../auxiliador/auxiliador.js"></script>
+</body>
+</html>

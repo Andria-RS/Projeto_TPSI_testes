@@ -1,0 +1,141 @@
+<!-- public/admin/admin.html<!DOCTYPE html>
+<html lang="pt">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+  <title>Painel Admin</title>
+  <script>
+    //function add_user(event) {
+      document.getElementById('meuForm').addEventListener('submit', function(event){
+
+      event.preventDefault(); // Impede o comportamento padrão do envio do formulário
+     
+  const form_addUser = document.getElementById('meuForm');
+  
+      // Coleta os valores dos campos do formulário
+      // const nome = document.getElementById("nome").value;
+      // const email = document.getElementById("email").value;
+      // const password = document.getElementById("password").value;
+      // const contacto = document.getElementById("contacto").value;
+      // const curriculo = document.getElementById("curriculo").value;
+      // const especialidade = document.getElementById("especialidade").value;
+      // const id_tipo_utilizador = document.getElementById("id_tipo_utilizador").value;
+      // const id_polo = document.getElementById("id_polo").value;
+      // const foto = document.getElementById("foto").files[0]; // Pega o arquivo da foto, se existir
+  
+      // Criar um FormData para enviar o arquivo de forma correta
+      const formData = new FormData(form_addUser);
+      // formData.append("nome", nome);
+      // formData.append("email", email);
+      // formData.append("password", password);
+      // formData.append("contacto", contacto);
+      // formData.append("curriculo", curriculo);
+      // formData.append("especialidade", especialidade);
+      // formData.append("id_tipo_utilizador", id_tipo_utilizador);
+      // formData.append("id_polo", id_polo);
+    
+      // console.log(formData);
+  
+      // if (foto) {
+      //   formData.append("foto", foto); // Se uma foto for selecionada, anexa ao FormData
+      // }
+      // Printar os valores para depuração
+  console.log("Valores das variáveis:");
+  console.log("nome:", nome);
+  console.log("email:", email);
+  console.log("password:", password);
+  console.log("contacto:", contacto);
+  console.log("curriculo:", curriculo);
+  console.log("especialidade:", especialidade);
+  console.log("id_tipo_utilizador:", id_tipo_utilizador);
+  console.log("id_polo:", id_polo);
+
+  if (foto) {
+    console.log("foto: Foto anexada");
+  } else {
+    console.log("foto: Nenhuma foto anexada");
+  }
+
+
+
+
+      
+  
+      // Envia a requisição POST para o backend com o FormData
+      fetch("/api/add_user", {
+        method: "POST",
+        body: formData,  // Não é necessário especificar o Content-Type ao usar FormData
+      })
+      .then(response => response.json())
+      .then(data => {
+        if (data.message) {
+          alert(data.message);
+          if (data.message === "Usuário registrado com sucesso!") {
+            window.location.href = "/aplicacao/admin.html";  
+          }
+        }
+      })
+      .catch(error => {
+        alert("Erro ao registrar: " + error.message);
+      });
+    }
+  </script>
+  
+</head>
+<body >
+  <div class="container mt-5">
+    <h2 class="text-center">Painel de Administração</h2>
+    <p class="text-center">Bem-vindo à área de administração.</p>
+    <div class="text-center">
+      <div>
+
+          <h1>Cadastro de Usuário</h1>
+  
+            <form id="meuForm">   
+              <label for="nome">Nome:</label><br>
+              <input type="text" id="nome" name="nome" required><br><br>
+              
+              <label for="contacto">Contacto:</label><br>
+              <input type="text" id="contacto" name="contacto" required><br><br>
+              
+              <label for="email">Email:</label><br>
+              <input type="email" id="email" name="email" required><br><br>
+              
+              <label for="password">Senha:</label><br>
+              <input type="password" id="password" name="password" required><br><br>
+              
+              <label for="curriculo">Currículo:</label><br>
+              <textarea id="curriculo" name="curriculo" rows="4" cols="50"></textarea><br><br>
+              
+              <label for="especialidade">Especialidade:</label><br>
+              <input type="text" id="especialidade" name="especialidade" required><br><br>
+              
+              <label for="data_registo">Data de Registro:</label><br>
+              <input type="date" id="data_registo" name="data_registo" required><br><br>
+              
+              <label for="foto">Foto:</label><br>
+              <input type="file" id="foto" name="foto" accept="image/*"><br><br>
+              
+              <label for="id_tipo_utilizador">Tipo de Utilizador:</label><br>
+              <select id="id_tipo_utilizador" name="id_tipo_utilizador" required>
+                  <option value="1">Administrador</option>
+                  <option value="2">Usuário</option>
+              </select><br><br>
+              
+              <label for="id_polo">Polo:</label><br>
+              <select id="id_polo" name="id_polo" required>
+                  <option value="1">Polo 1</option>
+                  <option value="2">Polo 2</option>
+              </select><br><br>
+              
+              <input type="submit" value="Cadastrar">
+          </form>
+
+
+      </div>
+      <a href="/home" class="btn btn-primary">Voltar para a Página Inicial</a>
+    </div>
+  </div>
+</body>
+</html> -->

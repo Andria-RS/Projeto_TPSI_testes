@@ -11,111 +11,201 @@
     <div id="navbar"></div>
 
   <!-- Main Content -->
-  <main class="container py-5 mt-5">
-    <h2 class="text-center fw-bold mb-5 mt-3">Bem-vindo ao Gestor de Teses de Mestrado do Instituto Politécnico de Viana do Castelo</h2>
+  <div class="container py-5 mt-5">
+    <h2 class="text-center fw-bold mb-5 mt-3">Tarefas</h2>
 
-    <!-- Cards Section -->
-    <div class="row g-4">
-      <!-- Card 1 -->
-      <div class="col-md-6">
-        <div class="card shadow-sm h-100">
-          <div class="row g-0">
-            <div class="col-md-4">
-              <img src="../assets/ESTG.png" alt="ESTG" class="img-fluid rounded-start">
-            </div>
-            <div class="col-md-8">
-              <div class="card-body">
-                <p class="card-text">A Escola Superior de Tecnologia e Gestão "ESTG" é uma unidade orgânica do IPVC, criada em 1985 para responder às necessidades do mercado de trabalho...</p>
-              </div>
-            </div>
-          </div>
-        </div>
+    <!-- Card 1 -->
+    <div class="card mb-3" onclick="openModal('modal_sala')">
+      <div class="card-header">
+        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-calendar2-check" viewBox="0 0 16 16">
+          <path d="M10.854 8.146a.5.5 0 0 1 0 .708l-3 3a.5.5 0 0 1-.708 0l-1.5-1.5a.5.5 0 0 1 .708-.708L7.5 10.793l2.646-2.647a.5.5 0 0 1 .708 0"/>
+          <path d="M3.5 0a.5.5 0 0 1 .5.5V1h8V.5a.5.5 0 0 1 1 0V1h1a2 2 0 0 1 2 2v11a2 2 0 0 1-2 2H2a2 2 0 0 1-2-2V3a2 2 0 0 1 2-2h1V.5a.5.5 0 0 1 .5-.5M2 2a1 1 0 0 0-1 1v11a1 1 0 0 0 1 1h12a1 1 0 0 0 1-1V3a1 1 0 0 0-1-1z"/>
+          <path d="M2.5 4a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 .5.5v1a.5.5 0 0 1-.5.5H3a.5.5 0 0 1-.5-.5z"/>
+        </svg>
+        - Pedido de Sala
       </div>
+      <div class="card-body">
+        <button class="btn" onclick="openModal('modal_sala')" style="background-color: transparent; border: none;"> Clique para fazer o pedido de reservação de sala.</button> 
+      </div>
+    </div>
 
       <!-- Card 2 -->
-      <div class="col-md-6">
-        <div class="card shadow-sm h-100">
-          <div class="row g-0">
-            <div class="col-md-4">
-              <img src="../assets/ESS.png" alt="ESS" class="img-fluid rounded-start">
-            </div>
-            <div class="col-md-8">
-              <div class="card-body">
-                <p class="card-text">A ESS dispõe de um corpo docente especializado, qualificado, dinâmico e empenhado na formação, investigação, extensão à comunidade e transferência do conhecimento...</p>
-              </div>
-            </div>
-          </div>
+      <div class="card mb-3" onclick="openModal('modal_invite')">
+        <div class="card-header"> 
+          <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-envelope-paper" viewBox="0 0 16 16">
+            <path d="M4 0a2 2 0 0 0-2 2v1.133l-.941.502A2 2 0 0 0 0 5.4V14a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V5.4a2 2 0 0 0-1.059-1.765L14 3.133V2a2 2 0 0 0-2-2zm10 4.267.47.25A1 1 0 0 1 15 5.4v.817l-1 .6zm-1 3.15-3.75 2.25L8 8.917l-1.25.75L3 7.417V2a1 1 0 0 1 1-1h8a1 1 0 0 1 1 1zm-11-.6-1-.6V5.4a1 1 0 0 1 .53-.882L2 4.267zm13 .566v5.734l-4.778-2.867zm-.035 6.88A1 1 0 0 1 14 15H2a1 1 0 0 1-.965-.738L8 10.083zM1 13.116V7.383l4.778 2.867L1 13.117Z"/>
+          </svg>
+          - Convidar
+        </div>
+        <div class="card-body">
+          <button class="btn" onclick="openModal('modal_invite')" style="background-color: transparent; border: none;"> Clique para convidar.</button> 
         </div>
       </div>
 
       <!-- Card 3 -->
-      <div class="col-md-6">
-        <div class="card shadow-sm h-100">
-          <div class="row g-0">
-            <div class="col-md-4">
-              <img src="../assets/ESE.png" alt="ESE" class="img-fluid rounded-start">
-            </div>
-            <div class="col-md-8">
-              <div class="card-body">
-                <p class="card-text">A Escola Superior de Educação do Instituto Politécnico de Viana do Castelo "ESE IPVC" foi a primeira unidade orgânica a integrar o Instituto Politécnico...</p>
-              </div>
-            </div>
-          </div>
+      <div class="card mb-3" onclick="openModal('submitThesisModal')">
+        <div class="card-header">
+          <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-envelope-paper" viewBox="0 0 16 16">
+            <path d="M4 0a2 2 0 0 0-2 2v1.133l-.941.502A2 2 0 0 0 0 5.4V14a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V5.4a2 2 0 0 0-1.059-1.765L14 3.133V2a2 2 0 0 0-2-2zm10 4.267.47.25A1 1 0 0 1 15 5.4v.817l-1 .6zm-1 3.15-3.75 2.25L8 8.917l-1.25.75L3 7.417V2a1 1 0 0 1 1-1h8a1 1 0 0 1 1 1zm-11-.6-1-.6V5.4a1 1 0 0 1 .53-.882L2 4.267zm13 .566v5.734l-4.778-2.867zm-.035 6.88A1 1 0 0 1 14 15H2a1 1 0 0 1-.965-.738L8 10.083zM1 13.116V7.383l4.778 2.867L1 13.117Z"/>
+          </svg>
+          - Submeta sua Tese
         </div>
+          <div class="card-body">
+            <button class="btn" onclick="openModal('modal_add_tese')" style="background-color: transparent; border: none;"> Clique para enviar sua tese.</button> 
+          </div>
       </div>
 
-      <!-- Card 4 -->
-      <div class="col-md-6">
-        <div class="card shadow-sm h-100">
-          <div class="row g-0">
-            <div class="col-md-4">
-              <img src="../assets/ESA.png" alt="ESA" class="img-fluid rounded-start">
-            </div>
-            <div class="col-md-8">
-              <div class="card-body">
-                <p class="card-text">A Escola Superior Agrária "ESA" é uma das Unidades Orgânicas integrantes do Instituto Politécnico de Viana do Castelo (IPVC), criada em 1985...</p>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
 
-      <!-- Card 5 -->
-      <div class="col-md-6">
-        <div class="card shadow-sm h-100">
-          <div class="row g-0">
-            <div class="col-md-4">
-              <img src="../assets/ESCE.png" alt="ESCE" class="img-fluid rounded-start">
-            </div>
-            <div class="col-md-8">
-              <div class="card-body">
-                <p class="card-text">Conteúdo da ESCE...</p>
+      <!-- Modal  convite-->
+ <div id="modal_invite" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog" style="max-width: 800px;"> 
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">Adicionar Mestrado</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close" onclick="clearNotifications()">
+          <span aria-hidden="true">&times;</span>
+        </button>
+        <div class="container mt-5">
+          <h1 class="text-center">Enviar E-mail</h1>
+          <form id="form_invite"  onsubmit="sendEmail(event)" class="form-submit">
+              <div class="mb-3">
+                  <label for="emailTo" class="form-label">Destinatário</label>
+                  <input type="email" class="form-control" id="emailTo" placeholder="exemplo@dominio.com" required>
               </div>
-            </div>
-          </div>
-        </div>
-      </div>
-
-      <!-- Card 6 -->
-      <div class="col-md-6">
-        <div class="card shadow-sm h-100">
-          <div class="row g-0">
-            <div class="col-md-4">
-              <img src="../assets/ESDL.png" alt="ESDL" class="img-fluid rounded-start">
-            </div>
-            <div class="col-md-8">
-              <div class="card-body">
-                <p class="card-text">Conteúdo da ESDL...</p>
+              <div class="mb-3">
+                  <label for="emailSubject" class="form-label">Assunto</label>
+                  <input type="text" class="form-control" id="emailSubject" placeholder="Digite o assunto" required>
               </div>
-            </div>
-          </div>
-        </div>
+              <div class="mb-3">
+                  <label for="emailText" class="form-label">Mensagem</label>
+                  <textarea class="form-control" id="emailText" rows="5" placeholder="Digite sua mensagem" required></textarea>
+              </div>
+              <button type="submit"  class="btn btn-primary">Enviar</button>
+          </form>
+          <div class="responseMessage mt-3" id="responseMessage" style="display: none;"></div>
       </div>
-
+    
     </div>
-  </main>
+    </div>
+  </div>
+</div>
+  
+<!-- Modal Criar Tese -->
+<div id="modal_add_tese" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog" style="max-width: 800px;">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">Adicionar Tese</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <form id="form_Tese" onsubmit="add_tese(event)">
+        <div class="modal-body">
+          <div class="form-group">
+            <label for="tema">Tema:</label>
+            <input type="text" class="form-control" id="tema" name="tema" placeholder="Digite o tema da tese" required>
+          </div>
+          <div class="form-group">
+            <label for="descricao">Descrição:</label>
+            <textarea class="form-control" id="descricao" name="descricao" placeholder="Digite a descrição da tese"></textarea>
+          </div>
+          <div class="form-group">
+            <label for="status">Status:</label>
+            <select class="form-control" id="status" name="status" required>
+              <option value="">Selecione o status</option>
+              <option value="Em Andamento">Em Andamento</option>
+              <option value="Concluída">Concluída</option>
+            </select>
+          </div>
+          <div class="form-group">
+            <label for="data_submissao">Data de Submissão:</label>
+            <input type="date" class="form-control" id="data_submissao" name="data_submissao">
+          </div>
+          <div class="form-group">
+            <label for="id_aluno">Aluno:</label>
+            <select class="class_alunos form-control" id="id_aluno" name="id_aluno" required>
+              <option value="">Selecione o aluno</option>
+            </select>
+          </div>
+          <div class="form-group">
+            <label for="id_orientador">Orientador:</label>
+            <select class="class_orientador form-control" id="id_orientador" name="id_orientador" required>
+              <option value="">Selecione o orientador</option>
+            </select>
+          </div>
+          <div class="form-group">
+            <label for="id_coordenador_tese">Coordenador:</label>
+            <select class="class_coordenador form-control" id="id_coordenador_tese" name="id_coordenador_tese" required>
+              <option value="">Selecione o coordenador</option>
+            </select>
+            
+          </div>
+        </div>
+        <div class="modal-footer">
+          <button type="submit" class="btn btn-primary">Adicionar</button>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>
 
+<!-- Modal para Reserva de Sala / Auditório -->
+<div id="modal_sala" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog" style="max-width: 800px;"> 
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">Reserva de Sala/Auditório</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close" onclick="clearNotifications()">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <div class="container mt-5">
+          <h1 class="text-center">Solicitação de Reserva</h1>
+          <!-- Formulário de envio de e-mail -->
+          <form id="form_request" class="form-submit">
+              <div class="mb-3">
+
+                  <!-- Aqui a mensagem pode ser editada, destacando campos para o usuário preencher -->
+                  <textarea class="form-control" id="emailText_request" rows="15">
+                  Prezado(a),
+
+                  Gostaria de solicitar a reserva da sala/auditório para a apresentação de umatese de mestrado. Abaixo estão os detalhes da minha solicitação:
+
+                  - Sala desejada: 
+                  - Data: 
+                  - Horário: 
+                  - Necessidades especiais: 
+
+                  Aguardo a confirmação da reserva.
+
+                  Atenciosamente,
+                  
+                  Coordenadora de Curso
+                </textarea>
+              </div>
+              <button type="submit"  onsubmit="sendEmail(event)"class="btn btn-primary">Enviar Solicitação</button>
+            </form>
+            <div class="responseMessageRequest mt-3" id="responseMessageRequest" style="display: none;"></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+</div>
+
+
+
+<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.5/dist/umd/popper.min.js"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
   <script src="../auxiliador\loadNavbar.js"></script>
+  <script src="../auxiliador\auxiliador.js"></script>
+  <script src="../auxiliador/auxiliador_submissoes.js"></script>
+  <script src="../auxiliador\auxiliador_email.js"></script>
+
 </body>
 </html>

@@ -425,3 +425,128 @@ exports.getAllUsersbyCordenador = (req, res) => {
     res.status(401).json({ message: "Usuário não autenticado." });
   }
 };
+
+
+exports.add_tese = [
+  async (req, res) => {
+    console.log("Recebendo no req.body:", req.body); // Log inicial para depuração
+
+    try {
+      // Verifica se o corpo da requisição contém JSON válido
+      if (!req.body || typeof req.body !== "object") {
+        return res.status(400).json({
+          message: "O corpo da requisição deve ser um objeto JSON válido.",
+        });
+      }
+
+      // Desestruturação de campos do corpo da requisição
+      const {
+        tema,
+        descricao,
+        status,
+        data_submissao,
+        id_aluno,
+        id_orientador,
+        id_coordenador,
+      } = req.body;
+
+      console.log("ENTREI NO CONTROLADOR");
+      console.log("Dados recebidos (req.body):", req.body);
+
+      // --- Validação de Campos ---
+      const camposFaltando = [];
+
+      // Verificação de campos obrigatórios
+      if (!tema || tema.trim() === "") camposFaltando.push("tema");
+      if (!status || status.trim() === "") camposFaltando.push("status");
+      if (!id_aluno || id_aluno.trim() === "") camposFaltando.push("id_aluno");
+      if (!id_orientador || id_orientador.trim() === "") camposFaltando.push("id_orientador");
+      if (!id_coordenador || id_coordenador.trim() === "") camposFaltando.push("id_coordenador");
+
+      // Retorna erro caso algum campo obrigatório esteja faltando
+      if (camposFaltando.length > 0) {
+        return res.status(400).json({
+          message: `Campos obrigatórios faltando: ${camposFaltando.join(", ")}`,
+        });
+      }
+
+      // --- Preparação para inserção no banco de dados ---
+      const query = `
+        INSERT INTO tese (tema, descricao, status, data_submissao, id_aluno, id_orientador, id_coordenador)
+        VALUES (?, ?, ?, ?, ?, ?, ?)
+      `;
+      const values = [
+        tema,
+        descricao || null, // Permite que 'descricao' seja nulo
+        status,
+        data_submissao || null, // Permite que 'data_submissao' seja nulo
+        id_aluno,
+        id_orientador,
+        id_coordenador,
+      ];
+
+      console.log("Preparando a query SQL:", query);
+      console.log("Valores para inserção:", values);
+
+      // Execução da query no banco de dados
+      db.query(query, values, (err, result) => {
+        if (err) {
+          console.error("Erro ao executar a query:", err.message);
+          return res.status(500).json({
+            message: "Erro ao registrar a tese: " + err.message,
+          });
+        }
+
+        console.log("Tese registrada com sucesso. ID:", result.insertId);
+        res.status(201).json({ message: "Tese adicionada com sucesso!" });
+      });
+    } catch (err) {
+      console.error("Erro no controlador:", err.message);
+      res.status(500).json({ message: "Erro interno do servidor: " + err.message });
+    }
+  },
+];
+
+
+exports.getUserPerfil = (req, res) => {
+  if (req.session.userId) {
+    let id_user = req.params.userId;
+
+    const query = `
+         SELECT 
+              u.id_user,
+              u.nome,
+              u.email,
+              u.contacto,
+              u.curriculo,
+              u.especialidade,
+              u.foto,
+              DATE_FORMAT(u.data_registo, '%Y-%m-%d') AS data_registo, 
+              t.id_tipo_utilizador AS Tipo_utilizador,
+              p.id_polo AS Polo
+          FROM 
+              Users u
+          LEFT JOIN 
+              Tipo_Utilizador t ON u.id_tipo_utilizador = t.id_tipo_utilizador
+          LEFT JOIN 
+              Polo p ON u.id_polo = p.id_polo
+          WHERE 
+              u.id_user = ?;
+    `;
+
+    db.query(query, [id_user], (err, results) => {
+      if (err) {
+        console.error("Erro ao buscar os dados do usuário:", err);
+        return res.status(500).json({ message: "Erro ao buscar os dados do usuário.", error: err });
+      }
+
+      if (results.length === 0) {
+        return res.status(404).json({ message: "Usuário não encontrado." });
+      }
+
+      res.status(200).json(results[0]);
+    });
+  } else {
+    res.status(401).json({ message: "Usuário não autenticado." });
+  }
+};

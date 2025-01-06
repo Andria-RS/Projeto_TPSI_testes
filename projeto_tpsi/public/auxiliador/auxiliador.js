@@ -8,6 +8,12 @@ function openModal(modalId) {
     
   $('#' + modalId).modal('dismiss');
  }
+
+ function openSearchPage() {
+  window.location.href = 'search.html'; // Redireciona para search.html
+}
+
+
 document.addEventListener('DOMContentLoaded', function() {
   // Requisição para obter os cursos
   fetch('/api/option_curso') // A URL do seu endpoint no backend
@@ -52,6 +58,7 @@ document.addEventListener('DOMContentLoaded', function() {
     });
 });
 
+//polo
 document.addEventListener('DOMContentLoaded', function() {
   // Requisição para obter os polos
   fetch('/api/option_Polo') // A URL do seu endpoint no backend
@@ -88,36 +95,86 @@ document.addEventListener('DOMContentLoaded', function() {
     });
 });
   
+//coordenador
 
 document.addEventListener('DOMContentLoaded', function() {
   // Requisição para obter os tipos de utilizador
   fetch('/api/option_coordenador') 
     .then(response => response.json())
     .then(data => {
-      const selectTiposUtilizador = document.querySelectorAll('.class_orientador'); 
+      const selectTiposUtilizador = document.querySelectorAll('.class_coordenador');  // Altere a classe para 'class_coordenador'
 
       selectTiposUtilizador.forEach(selectTipoUtilizador => {
-        selectTipoUtilizador.innerHTML = '<option value="">Selecione o Orientador</option>';
+        selectTipoUtilizador.innerHTML = '<option value="">Selecione o Coordenador</option>';  // Alterado de 'Orientador' para 'Coordenador'
         
         // Preenche o select com as opções dos tipos de utilizador
         data.forEach(tipo => {
           const option = document.createElement('option');
+          
           option.value = tipo.id_user; 
           option.textContent = tipo.nome; 
+         
           selectTipoUtilizador.appendChild(option);
         });
       });
     });
 });
 
-  // LOGIN FUNCTION
+
+
+
+//alunos
+document.addEventListener('DOMContentLoaded', function() {
+  
+  fetch('/api/option_alunos') // A URL do seu endpoint no backend
+    .then(response => response.json()) // Converte a resposta para JSON
+    .then(data => {
+      const   selectAluno = document.querySelectorAll('.class_alunos'); // Seleciona todos os elementos com a classe 'class_tipo_utilizador'
+
+      selectAluno.forEach(  selectAluno => {
+        // Limpa as opções atuais do select
+        selectAluno.innerHTML = '<option value="">Selecione o Estudante</option>';
+        
+        // Preenche o select com as opções dos tipos de utilizador
+        data.forEach(tipo => {
+          const option = document.createElement('option');
+          option.value = tipo.id_user; 
+          option.textContent = tipo.nome; 
+          selectAluno.appendChild(option);
+        });
+      });
+    });
+});
+
+//orientadores
+document.addEventListener('DOMContentLoaded', function() {
+  fetch('/api/option_orientador') // A URL do seu endpoint no backend
+  .then(response => response.json()) // Converte a resposta para JSON
+  .then(data => {
+    const   selectOrientador = document.querySelectorAll('.class_orientador'); // Seleciona todos os elementos com a classe 'class_tipo_utilizador'
+
+    selectOrientador.forEach(  selectOrientador => {
+      // Limpa as opções atuais do select
+      selectOrientador.innerHTML = '<option value="">Selecione o Orientador</option>';
+      
+      // Preenche o select com as opções dos tipos de utilizador
+      data.forEach(tipo => {
+        const option = document.createElement('option');
+        option.value = tipo.id_user; 
+        option.textContent = tipo.nome; 
+        selectOrientador.appendChild(option);
+      });
+    });
+  });
+});
+
   
   function login(event) {
     event.preventDefault();
     
     const email = document.getElementById("email").value;
     const password = document.getElementById("password").value;
-
+  
     fetch("/api/login", {
       method: "POST",
       headers: {
@@ -128,6 +185,11 @@ document.addEventListener('DOMContentLoaded', function() {
     .then(response => response.json())
     .then(data => {
       if (data.userId) {
+        // Corrigido de 'essionStorage' para 'sessionStorage'
+        sessionStorage.setItem('userId', data.userId);  // Armazenando no sessionStorage
+        console.log(`Usuário logado com ID: ${data.userId}`);
+        
+        // Redireciona para a página principal
         window.location.href = "/aplicacao/index.html";  // Redireciona para index.html
       } else {
         alert(data.message);  // Exibe mensagem de erro, caso não consiga fazer login
@@ -137,6 +199,7 @@ document.addEventListener('DOMContentLoaded', function() {
       alert("Erro ao realizar login: " + error.message);
     });
   }
+  
 
   // REGISTER FUNCTION
 
@@ -193,28 +256,12 @@ document.addEventListener('DOMContentLoaded', function() {
         // Cria um objeto FormData
         const formData = new FormData();
 
-        // Elementos
-const nome = document.getElementById(`nome${prefix}`)?.value || "";
-const email = document.getElementById(`email${prefix}`)?.value || "";
-const password = document.getElementById(`password${prefix}`)?.value || "";
-const contacto = document.getElementById(`contacto${prefix}`)?.value || "";
-const especialidade = document.getElementById(`esp${prefix}`)?.value || "";
-const id_polo = document.querySelector('.class_polo')?.value || "";
-
-// Logs
-console.log("Nome:", nome);
-console.log("Email:", email);
-console.log("Password:", password);
-console.log("Contacto:", contacto);
-console.log("Especialidade:", especialidade);
-console.log("ID Polo:", id_polo);
-
         // Adiciona os campos de texto ao FormData
         formData.append("nome", document.getElementById(`nome${prefix}`)?.value || "");
         formData.append("email", document.getElementById(`email${prefix}`)?.value || "");
         formData.append("password", document.getElementById(`password${prefix}`)?.value || "");
         formData.append("contacto", document.getElementById(`contacto${prefix}`)?.value || "");
-        formData.append("especialidade", document.getElementById(`especialidade${prefix}`)?.value || "");
+        formData.append("especialidade", document.getElementById(`esp${prefix}`)?.value || "");
         formData.append("id_polo", formElement.querySelector('.class_polo')?.value || "");
        
         if (formId === "form_Aluno") {
@@ -222,8 +269,8 @@ console.log("ID Polo:", id_polo);
           formData.append("id_tipo_utilizador", 2); // Tipo fixo para alunos
           
         } else if (formId === "form_Admin") {
-          formData.append("curso", document.querySelector('.class_curso')?.value || "");
           formData.append("id_tipo_utilizador", document.querySelector('.class_tipo_utilizador')?.value || "");
+          formData.append("curso", document.querySelector('.class_curso')?.value || "");
          
         }else if (formId === "form_Coordenador") {
           formData.append("id_tipo_utilizador", 4); 
@@ -313,12 +360,8 @@ console.log("ID Polo:", id_polo);
               <td>${usuario.Tipo_utilizador}</td>
               <td>${usuario.Polo}</td>
               <td>
-                  <button class="btn btn-warning btn-sm" data-toggle="modal" data-target="#editModal" onclick="editarUsuario(${usuario.id_user})">
-                    <i class="fas fa-edit"></i> Editar
-                  </button>
-                  <button class="btn btn-danger btn-sm" data-toggle="modal" data-target="#deleteModal" onclick="setUserIdToDelete(${usuario.id_user})">
-                    <i class="fas fa-trash-alt"></i> Eliminar
-                  </button>
+                  <button class="btn btn-warning btn-sm" data-toggle="modal" data-target="#editModal" onclick="editarUsuario(${usuario.id_user})"><i class="fas fa-edit"></i>Editar</button>
+                   <button class="btn btn-danger btn-sm" data-toggle="modal" data-target="#deleteModal" onclick="setUserIdToDelete(${usuario.id_user})"><i class="fas fa-trash-alt"></i>Excluir</button>
               </td>
               `;
             tbody.appendChild(tr);
@@ -382,24 +425,23 @@ function editarUsuario(id) {
       document.getElementById("editEmail").value = usuario.email;
       document.getElementById("editPassword").value = "";
       document.getElementById("editContacto").value = usuario.contacto;
-      document.getElementById("editCurriculo").value = usuario.curriculo;
-      document.getElementById("editEspecialidade").value = usuario.especialidade;
+     // document.getElementById("editCurriculo").value = usuario.curriculo;
+      //document.getElementById("editEspecialidade").value = usuario.especialidade;
 
       tipo_User = usuario.Tipo_utilizador;
       data = usuario.data_registo;
 
-      const poloSelect = document.getElementById("id_polo");
-      console.log(usuario.Polo);
-    
-      poloSelect.value = usuario.Polo;
-      const valorSelecionado = parseInt(poloSelect.value, 10);
-      console.log(valorSelecionado);
-    
-      console.log( valorSelecionado);
+   //     const poloSelect = document.getElementById("id_polo");
+     //   console.log(usuario.Polo);
+//        poloSelect.value = usuario.Polo;
+  //      const valorSelecionado = parseInt(poloSelect.value, 10);
+    //    console.log(valorSelecionado);
+      
+      //  console.log( valorSelecionado);
 
-      if (valorSelecionado !== usuario.Polo) {
-        console.warn(`Polo ID ${usuario.Polo} não encontrado na lista de opções.`);
-      }
+  //      if (valorSelecionado !== usuario.Polo) {
+    //      console.warn(`Polo ID ${usuario.Polo} não encontrado na lista de opções.`);
+      //  }
 
       $("#editModal").modal("show");
     })
@@ -412,6 +454,7 @@ function editarUsuario(id) {
 
 
 function salvarEdicaoUsuario() {
+  console.log("ENTEI---------------------------------------");
   
   const nome = document.getElementById("editNome").value.trim();
   const email = document.getElementById("editEmail").value.trim();
@@ -426,18 +469,18 @@ function salvarEdicaoUsuario() {
 
   const contacto = document.getElementById("editContacto").value.trim();
   const curriculo = document.getElementById("editCurriculo").value.trim();
-  const especialidade = document.getElementById("editEspecialidade").value.trim();
- const poloSelect1 = document.getElementById("editPolo");
-  const poloSelect = document.getElementById("id_polo"); // Certifique-se do ID correto
-  console.log("poloSelect");
+  //const especialidade = document.getElementById("editEspecialidade").value.trim();
+  //const poloSelect1 = document.getElementById("editPolo");
+ // const poloSelect = document.getElementById("id_polo"); // Certifique-se do ID correto
+  //console.log("poloSelect");
   
-  console.log(poloSelect.value);
+ // console.log(poloSelect.value);
  // const idPolo = poloSelect.options[poloSelect.selectedIndex]?.id;
- const idPolo = poloSelect.value;
+ //const idPolo = poloSelect.value;
 
-console.log(idPolo)
+//console.log(idPolo)
 
-  if (!nome || !email || !idPolo) {
+  if (!nome || !email) {
     alert("Preencha todos os campos obrigatórios.");
     return;
   }
@@ -516,3 +559,80 @@ async function add_course(event) {
       alert("Erro ao adicionar curso: " + error.message);
     });
 }
+
+
+document.addEventListener("DOMContentLoaded", function () {
+  const formElement = document.getElementById("form_Tese"); // Captura o formulário com ID 'form_Tese'
+
+  if (!formElement) {
+    console.error("Formulário com ID 'form_Tese' não encontrado.");
+    return; // Interrompe o processo caso o formulário não seja encontrado
+  }
+
+  // Função para adicionar a tese
+  async function add_tese(event) {
+    console.log("ENTREI NO ADD_TESE");
+    event.preventDefault(); // Impede o comportamento padrão do formulário
+
+    // Captura dos valores dos campos do formulário
+    const tema = formElement.querySelector("#tema")?.value || "";
+    const descricao = formElement.querySelector("#descricao")?.value || "";
+    const status = formElement.querySelector("#status")?.value || "";
+    const dataSubmissao = formElement.querySelector("#data_submissao")?.value || "";
+    const idAluno = formElement.querySelector(".class_alunos")?.value || "";
+    const idOrientador = formElement.querySelector(".class_orientador")?.value || "";
+    const idCoordenador = formElement.querySelector(".class_coordenador")?.value || "00";
+
+    console.log("Valores capturados do formulário:");
+    console.log(`Tema: ${tema}`);
+    console.log(`Descrição: ${descricao}`);
+    console.log(`Status: ${status}`);
+    console.log(`Data de Submissão: ${dataSubmissao}`);
+    console.log(`Aluno ID: ${idAluno}`);
+    console.log(`Orientador ID: ${idOrientador}`);
+    console.log(`Coordenador ID: ${idCoordenador}`);
+
+    // Cria um objeto para os dados
+    const jsonData = {
+      tema,
+      descricao,
+      status,
+      data_submissao: dataSubmissao,
+      id_aluno: idAluno,
+      id_orientador: idOrientador,
+      id_coordenador: idCoordenador
+    };
+
+    console.log("Dados a serem enviados (JSON):", jsonData);
+
+    // Envia os dados para o servidor como JSON
+    try {
+      const response = await fetch("/api/add_tese", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json"
+        },
+        body: JSON.stringify(jsonData) // Converte o objeto em uma string JSON
+      });
+
+      const data = await response.json();
+
+      if (data.message) {
+        alert(data.message);
+
+        if (data.message === "Tese adicionada com sucesso!") {
+          // Atualiza a página após o sucesso
+          window.location.href = "/aplicacao/index.html";
+          $('#modal_add_tese').modal('hide');
+          location.reload();
+        }
+      }
+    } catch (error) {
+      console.error("Erro ao registrar tese:", error);
+      alert("Erro ao registrar tese: " + error.message);
+    }
+  }
+
+  // Adiciona o evento de submissão ao formulário
+  formElement.addEventListener("submit", add_tese);
+});

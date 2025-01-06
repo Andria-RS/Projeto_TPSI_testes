@@ -60,3 +60,26 @@ exports.getCoordenador = (req, res) => {
         res.json(results);
     });
 };
+
+exports.getOrientador = (req, res) => {
+    // A consulta busca os id_curso e designacao da tabela cursos
+    db.query('SELECT u.id_user, u.nome FROM Users u WHERE u.id_tipo_utilizador = 3', (err, results) => {
+        if (err) {
+            console.error('Erro ao buscar orientadores:', err);
+            return res.status(500).json({ error: 'Erro ao buscar orientadores' });
+        }
+        res.json(results);
+    });
+};
+
+
+exports.getAlunos= (req, res) => {
+    // A consulta busca os id_curso e designacao da tabela cursos
+    db.query('SELECT u.id_user, u.nome FROM Users u WHERE u.id_tipo_utilizador = 2', (err, results) => {
+        if (err) {
+            console.error('Erro ao buscar alunos:', err);
+            return res.status(500).json({ error: 'Erro ao buscar alunos' });
+        }
+        res.json(results);
+    });
+};

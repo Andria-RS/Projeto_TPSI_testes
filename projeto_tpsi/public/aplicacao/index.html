@@ -40,397 +40,403 @@
 
 <div id="navbar"></div>
 
-<!--  CONTEUDO SIDEBAR -->
-<div class="sidebar mt-4" style="width: 500px; height: 815px; overflow-y: auto; position: fixed;">
+<div class="container-fluid py-5 mt-5">
+  <div class="row">
 
-  <!-- Card para Documentos -->
-  <div class="card mb-3">
-    <div class="card-header">
-      <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-search" viewBox="0 0 16 16">
-        <path d="M11.742 10.344a6.5 6.5 0 1 0-1.397 1.398h-.001q.044.06.098.115l3.85 3.85a1 1 0 0 0 1.415-1.414l-3.85-3.85a1 1 0 0 0-.115-.1zM12 6.5a5.5 5.5 0 1 1-11 0 5.5 5.5 0 0 1 11 0"/>
-      </svg>
-      - Visualizar\Pesquisar
-    </div>
-    <div class="card-body">
-      <a href="../aplicacao/search.html" class="btn" style="background-color: transparent; border: none;">
-        Clique para Visualizar\Pesquisar.</a>
-    </div>
-  </div>
+  <!--  CONTEUDO SIDEBAR -->
+  <nav class="col-lg-4 d-md-block bg-light sidebar p-3 vh-100">
+    <div class="list-group">
 
-  <!-- Card para Add Student -->
-  <div class="card mb-3" onclick="openModal('modal_add_Sutdent')">
-    <div class="card-header">
-      <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-person-plus" viewBox="0 0 16 16">
-        <path d="M6 8a3 3 0 1 0 0-6 3 3 0 0 0 0 6m2-3a2 2 0 1 1-4 0 2 2 0 0 1 4 0m4 8c0 1-1 1-1 1H1s-1 0-1-1 1-4 6-4 6 3 6 4m-1-.004c-.001-.246-.154-.986-.832-1.664C9.516 10.68 8.289 10 6 10s-3.516.68-4.168 1.332c-.678.678-.83 1.418-.832 1.664z"/>
-        <path fill-rule="evenodd" d="M13.5 5a.5.5 0 0 1 .5.5V7h1.5a.5.5 0 0 1 0 1H14v1.5a.5.5 0 0 1-1 0V8h-1.5a.5.5 0 0 1 0-1H13V5.5a.5.5 0 0 1 .5-.5"/>
-      </svg>
-      - Adicionar Aluno
-    </div>
-    <div class="card-body">
-      <button class="btn" onclick="openModal('modal_add_Sutdent')" style="background-color: transparent; border: none;"> Clique para Adicionar um Aluno.</button> 
-    </div>
-  </div>
-
-  <!-- Card para Add Course -->
-  <div class="card mb-3" onclick="openModal('modal_add_course')">
-    <div class="card-header">
-      <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-plus-circle" viewBox="0 0 16 16">
-        <path d="M8 15A7 7 0 1 1 8 1a7 7 0 0 1 0 14m0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16"/>
-        <path d="M8 4a.5.5 0 0 1 .5.5v3h3a.5.5 0 0 1 0 1h-3v3a.5.5 0 0 1-1 0v-3h-3a.5.5 0 0 1 0-1h3v-3A.5.5 0 0 1 8 4"/>
-      </svg>
-      - Adicionar curso
-    </div>
-    <div class="card-body">
-      <button class="btn" onclick="openModal('modal_add_course')" style="background-color: transparent; border: none;"> Clique para Adicionar um Curso.</button> 
-    </div>
-  </div>
-
-  <!-- Card para Add Cordenador -->
-  <div class="card mb-3" onclick="openModal('modal_add_Cordenador')">
-    <div class="card-header">
-      <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-person-plus" viewBox="0 0 16 16">
-        <path d="M6 8a3 3 0 1 0 0-6 3 3 0 0 0 0 6m2-3a2 2 0 1 1-4 0 2 2 0 0 1 4 0m4 8c0 1-1 1-1 1H1s-1 0-1-1 1-4 6-4 6 3 6 4m-1-.004c-.001-.246-.154-.986-.832-1.664C9.516 10.68 8.289 10 6 10s-3.516.68-4.168 1.332c-.678.678-.83 1.418-.832 1.664z"/>
-        <path fill-rule="evenodd" d="M13.5 5a.5.5 0 0 1 .5.5V7h1.5a.5.5 0 0 1 0 1H14v1.5a.5.5 0 0 1-1 0V8h-1.5a.5.5 0 0 1 0-1H13V5.5a.5.5 0 0 1 .5-.5"/>
-      </svg>
-      - Adicionar Coordenador
-    </div>
-    <div class="card-body">
-      <button class="btn" onclick="openModal('modal_add_Cordenador')" style="background-color: transparent; border: none;"> Clique para Adicionar um Coordenador.</button> 
-    </div>
-  </div>
-
-  <!-- Card para Add Orientador -->
-  <div class="card mb-3" onclick="openModal('modal_add_Oriendador')">
-    <div class="card-header">
-      <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-person-plus" viewBox="0 0 16 16">
-        <path d="M6 8a3 3 0 1 0 0-6 3 3 0 0 0 0 6m2-3a2 2 0 1 1-4 0 2 2 0 0 1 4 0m4 8c0 1-1 1-1 1H1s-1 0-1-1 1-4 6-4 6 3 6 4m-1-.004c-.001-.246-.154-.986-.832-1.664C9.516 10.68 8.289 10 6 10s-3.516.68-4.168 1.332c-.678.678-.83 1.418-.832 1.664z"/>
-        <path fill-rule="evenodd" d="M13.5 5a.5.5 0 0 1 .5.5V7h1.5a.5.5 0 0 1 0 1H14v1.5a.5.5 0 0 1-1 0V8h-1.5a.5.5 0 0 1 0-1H13V5.5a.5.5 0 0 1 .5-.5"/>
-      </svg>
-      - Adicionar Orientador
-    </div>
-    <div class="card-body">
-      <button class="btn" onclick="openModal('modal_add_Oriendador')" style="background-color: transparent; border: none;"> Clique para Adicionar um Orientador.</button> 
-    </div>
-  </div>
-
-  <!-- Card para Add Tese -->
-  <div class="card mb-3" onclick="openModal('modal_add_tese')">
-    <div class="card-header">
-      <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-file-earmark-plus" viewBox="0 0 16 16">
-        <path d="M8 6.5a.5.5 0 0 1 .5.5v1.5H10a.5.5 0 0 1 0 1H8.5V11a.5.5 0 0 1-1 0V9.5H6a.5.5 0 0 1 0-1h1.5V7a.5.5 0 0 1 .5-.5"/>
-        <path d="M14 4.5V14a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V2a2 2 0 0 1 2-2h5.5zm-3 0A1.5 1.5 0 0 1 9.5 3V1H4a1 1 0 0 0-1 1v12a1 1 0 0 0 1 1h8a1 1 0 0 0 1-1V4.5z"/>
-      </svg>
-      - Adicionar Tese
-    </div>
-    <div class="card-body">
-      <button class="btn" onclick="openModal('modal_add_tese')" style="background-color: transparent; border: none;"> Clique para Adicionar Tese.</button> 
-    </div>
-  </div>
-</div>
-
-
-
-  <!-- Modal  criar aluno-->
-<div id="modal_add_Sutdent" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-  <div class="modal-dialog" style="max-width: 800px;"> <!-- Ajuste de tamanho da modal -->
-    <div class="modal-content">
-      <div class="modal-header">
-        <h5 class="modal-title" id="exampleModalLabel">Cadastrar Novo Estudante</h5>
-        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-          <span aria-hidden="true">&times;</span>
-        </button>
-
-        <form id="form_Aluno" onsubmit="add_user(event)">
-          <div class="form-group">
-              <label for="nome_Admin">Nome:</label>
-              <input type="text" class="form-control" id="nome_Aluno" name="nome" placeholder="Digite o nome" required>
-          </div>
-
-          <div class="form-group">
-              <label for="contacto_Admin">Contacto:</label>
-              <input type="text" class="form-control" id="contacto_Aluno" name="contacto" placeholder="Digite o contacto" required>
-          </div>
-
-          <div class="form-group">
-              <label for="email_Admin">Email:</label>
-              <input type="email" class="form-control" id="email_Aluno" name="email" placeholder="Digite o email" required>
-          </div>
-
-          <div class="form-group">
-              <label for="password_Admin">Senha:</label>
-              <input type="password" class="form-control" id="password_Aluno" name="password" placeholder="Digite a senha" required>
-          </div>
-
-          <div class="form-group">
-              <label for="id_curso_Admin">Mestrado:</label>
-              <select class="class_curso form-control" id="id_curso_Aluno" name="id_curso" required>
-                  <option value="">Selecione o Curso</option>
-              </select>
-          </div>
-
-          <div class="form-group">
-              <label for="foto_Aluno">Foto:</label>
-              <input type="file" class="form-control-file" id="foto_Aluno" name="foto" accept="image/*">
-          </div>
-
-
-          <div class="form-group">
-              <label for="id_polo_Aluno">Polo:</label>
-              <select class="class_polo form-control" id="id_polo_Aluno" name="id_polo" required>
-                  <option value="">Selecione o Polo</option>
-              </select>
-          </div>
-
-          <button type="submit" class="btn btn-primary">Cadastrar</button>
-      </form>
-    
-    </div>
-    </div>
-  </div>
-</div>
-
- <!-- Modal  criar Cordenador-->
- <div id="modal_add_Cordenador" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-  <div class="modal-dialog" style="max-width: 800px;"> 
-    <div class="modal-content">
-      <div class="modal-header">
-        <h5 class="modal-title" id="exampleModalLabel">Cadastrar Novo Estudante</h5>
-        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-          <span aria-hidden="true">&times;</span>
-        </button>
-
-        <form id="form_Coordenador" onsubmit="add_user(event)">
-          <div class="form-group">
-              <label for="nome_Coordenador">Nome:</label>
-              <input type="text" class="form-control" id="nome_Coordenador" name="nome" placeholder="Digite o nome" required>
-          </div>
-
-          <div class="form-group">
-              <label for="contacto_Coordenador">Contacto:</label>
-              <input type="text" class="form-control" id="contacto_Coordenador" name="contacto" placeholder="Digite o contacto" required>
-          </div>
-
-          <div class="form-group">
-              <label for="email_Coordenador">Email:</label>
-              <input type="email" class="form-control" id="email_Coordenador" name="email" placeholder="Digite o email" required>
-          </div>
-
-          <div class="form-group">
-              <label for="password_Coordenador">Senha:</label>
-              <input type="password" class="form-control" id="password_Coordenador" name="password" placeholder="Digite a senha" required>
-          </div>
-
-          <div class="form-group">
-            <label for="esp_Coordenador">Especialidade:</label>
-            <input type="text" class="form-control" id="esp_Coordenador" name="especialidade" placeholder="Digite a Especialidade" required>
+      <!-- Card para Documentos -->
+      <div class="card mb-3">
+        <div class="card-header">
+          <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-search" viewBox="0 0 16 16">
+            <path d="M11.742 10.344a6.5 6.5 0 1 0-1.397 1.398h-.001q.044.06.098.115l3.85 3.85a1 1 0 0 0 1.415-1.414l-3.85-3.85a1 1 0 0 0-.115-.1zM12 6.5a5.5 5.5 0 1 1-11 0 5.5 5.5 0 0 1 11 0"/>
+          </svg>
+          - Visualizar\Pesquisar
         </div>
-
-          <div class="form-group mb-3">
-            <label for="Curiculo_Coordenador" class="form-label">Currículo (PDF):</label>
-            <input type="file" class="form-control" id="curriculo_Coordenador" name="curriculo" accept=".pdf"required>
-          </div>
-
-          <div class="form-group">
-              <label for="foto_Coordenador">Foto:</label>
-              <input type="file" class="form-control-file" id="foto_Coordenador" name="foto" accept="image/*">
-          </div>
-
-          <div class="form-group">
-              <label for="id_polo_Coordenador">Polo:</label>
-              <select class="class_polo form-control" id="id_polo_Coordenador" name="id_polo" required>
-                  <option value="">Selecione o Polo</option>
-              </select>
-          </div>
-
-          <button type="submit" class="btn btn-primary">Cadastrar</button>
-      </form>
-    
-    </div>
-    </div>
-  </div>
-</div>
-
- <!-- Modal  criar Curso-->
- <div id="modal_add_course" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-  <div class="modal-dialog" style="max-width: 800px;"> <!-- Ajuste de tamanho da modal -->
-    <div class="modal-content">
-      <div class="modal-header">
-        <h5 class="modal-title" id="exampleModalLabel">Adicionar Mestrado</h5>
-        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-          <span aria-hidden="true">&times;</span>
-        </button>
-
-        <form id="form_Curso" onsubmit="add_course(event)">
-
-          <div class="form-group">
-            <label for="nome_mestrado">Mestrado:</label>
-            <input type="text" class="form-control" id="nome_mestrado" name="nome_mestrado" placeholder="Digite o nome" required>
+        <div class="card-body">
+          <a href="../aplicacao/search.html" class="btn" style="background-color: transparent; border: none;">
+            Clique para Visualizar\Pesquisar.</a>
         </div>
-          <!-- <div class="form-group">
-              <label for="nome_Orientador">Orientador:</label>
-              <input type="text" class="form-control" id="nome_Orientador" name="nome_Orientador" placeholder="Digite o nome" required>
-          </div> -->
-
-          
-            <div class="form-group">
-              <label for="id_Orientador:">Coordenador:</label>
-              <select class="class_orientador form-control" id="id_Orientador" name="id_Orientador" required>
-                  <option value="">Selecione o Orientador</option>
-              </select>
-                    
-            </div>
-          
-          
-          <div class="form-group">
-            <label for="class_polo">Polo:</label>
-            <select class="class_polo form-control" id="id_polo_Curso" name="id_polo" required>
-                <option value="">Selecione o Polo</option>
-            </select>
-        </div>
-
-
-          <button type="submit" class="btn btn-primary">Adicionar</button>
-      </form>
-    
-    </div>
-    </div>
-  </div>
-</div>
-
-<!-- Modal  criar Orientador-->
-<div id="modal_add_Oriendador" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-  <div class="modal-dialog" style="max-width: 800px;"> 
-    <div class="modal-content">
-      <div class="modal-header">
-        <h5 class="modal-title" id="exampleModalLabel">Cadastrar Novo Estudante</h5>
-        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-          <span aria-hidden="true">&times;</span>
-        </button>
-
-        <form id="form_Oriendador" onsubmit="add_user(event)">
-          <div class="form-group">
-              <label for="nome_Oriendador">Nome:</label>
-              <input type="text" class="form-control" id="nome_Oriendador" name="nome" placeholder="Digite o nome" required>
-          </div>
-
-          <div class="form-group">
-              <label for="contacto_Oriendador">Contacto:</label>
-              <input type="text" class="form-control" id="contacto_Oriendador" name="contacto" placeholder="Digite o contacto" required>
-          </div>
-
-          <div class="form-group">
-              <label for="email_Oriendador">Email:</label>
-              <input type="email" class="form-control" id="email_Oriendador" name="email" placeholder="Digite o email" required>
-          </div>
-
-          <div class="form-group">
-              <label for="password_Oriendador">Senha:</label>
-              <input type="password" class="form-control" id="password_Oriendador" name="password" placeholder="Digite a senha" required>
-          </div>
-
-          <div class="form-group">
-            <label for="esp_Oriendador">Especialidade:</label>
-            <input type="text" class="form-control" id="esp_Oriendador" name="especialidade" placeholder="Digite a Especialidade" required>
-        </div>
-
-          <div class="form-group mb-3">
-            <label for="Curiculo_Oriendador" class="form-label">Currículo (PDF):</label>
-            <input type="file" class="form-control" id="curriculo_Oriendador" name="curriculo" accept=".pdf"required>
-          </div>
-
-          <div class="form-group">
-              <label for="foto_Oriendador">Foto:</label>
-              <input type="file" class="form-control-file" id="foto_Oriendador" name="foto" accept="image/*">
-          </div>
-
-          <div class="form-group">
-              <label for="id_polo_Oriendador">Polo:</label>
-              <select class="class_polo form-control" id="id_polo_Oriendador" name="id_polo" required>
-                  <option value="">Selecione o Polo</option>
-              </select>
-          </div>
-
-          <button type="submit" class="btn btn-primary">Cadastrar</button>
-      </form>
-    </div>
-    </div>
-  </div>
-</div>
-
-<!-- Modal Criar Tese -->
-<div id="modal_add_tese" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-  <div class="modal-dialog" style="max-width: 800px;">
-    <div class="modal-content">
-      <div class="modal-header">
-        <h5 class="modal-title" id="exampleModalLabel">Adicionar Tese</h5>
-        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-          <span aria-hidden="true">&times;</span>
-        </button>
       </div>
-      <form id="form_Tese" onsubmit="add_tese(event)">
-        <div class="modal-body">
-          <div class="form-group">
-            <label for="tema">Tema:</label>
-            <input type="text" class="form-control" id="tema" name="tema" placeholder="Digite o tema da tese" required>
+
+      <!-- Card para Add Student -->
+      <div class="card mb-3" onclick="openModal('modal_add_Sutdent')">
+        <div class="card-header">
+          <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-person-plus" viewBox="0 0 16 16">
+            <path d="M6 8a3 3 0 1 0 0-6 3 3 0 0 0 0 6m2-3a2 2 0 1 1-4 0 2 2 0 0 1 4 0m4 8c0 1-1 1-1 1H1s-1 0-1-1 1-4 6-4 6 3 6 4m-1-.004c-.001-.246-.154-.986-.832-1.664C9.516 10.68 8.289 10 6 10s-3.516.68-4.168 1.332c-.678.678-.83 1.418-.832 1.664z"/>
+            <path fill-rule="evenodd" d="M13.5 5a.5.5 0 0 1 .5.5V7h1.5a.5.5 0 0 1 0 1H14v1.5a.5.5 0 0 1-1 0V8h-1.5a.5.5 0 0 1 0-1H13V5.5a.5.5 0 0 1 .5-.5"/>
+          </svg>
+          - Adicionar Aluno
+        </div>
+        <div class="card-body">
+          <button class="btn" onclick="openModal('modal_add_Sutdent')" style="background-color: transparent; border: none;"> Clique para Adicionar um Aluno.</button> 
+        </div>
+      </div>
+
+      <!-- Card para Add Course -->
+      <div class="card mb-3" onclick="openModal('modal_add_course')">
+        <div class="card-header">
+          <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-plus-circle" viewBox="0 0 16 16">
+            <path d="M8 15A7 7 0 1 1 8 1a7 7 0 0 1 0 14m0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16"/>
+            <path d="M8 4a.5.5 0 0 1 .5.5v3h3a.5.5 0 0 1 0 1h-3v3a.5.5 0 0 1-1 0v-3h-3a.5.5 0 0 1 0-1h3v-3A.5.5 0 0 1 8 4"/>
+          </svg>
+          - Adicionar curso
+        </div>
+        <div class="card-body">
+          <button class="btn" onclick="openModal('modal_add_course')" style="background-color: transparent; border: none;"> Clique para Adicionar um Curso.</button> 
+        </div>
+      </div>
+
+      <!-- Card para Add Cordenador -->
+      <div class="card mb-3" onclick="openModal('modal_add_Cordenador')">
+        <div class="card-header">
+          <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-person-plus" viewBox="0 0 16 16">
+            <path d="M6 8a3 3 0 1 0 0-6 3 3 0 0 0 0 6m2-3a2 2 0 1 1-4 0 2 2 0 0 1 4 0m4 8c0 1-1 1-1 1H1s-1 0-1-1 1-4 6-4 6 3 6 4m-1-.004c-.001-.246-.154-.986-.832-1.664C9.516 10.68 8.289 10 6 10s-3.516.68-4.168 1.332c-.678.678-.83 1.418-.832 1.664z"/>
+            <path fill-rule="evenodd" d="M13.5 5a.5.5 0 0 1 .5.5V7h1.5a.5.5 0 0 1 0 1H14v1.5a.5.5 0 0 1-1 0V8h-1.5a.5.5 0 0 1 0-1H13V5.5a.5.5 0 0 1 .5-.5"/>
+          </svg>
+          - Adicionar Coordenador
+        </div>
+        <div class="card-body">
+          <button class="btn" onclick="openModal('modal_add_Cordenador')" style="background-color: transparent; border: none;"> Clique para Adicionar um Coordenador.</button> 
+        </div>
+      </div>
+
+      <!-- Card para Add Orientador -->
+      <div class="card mb-3" onclick="openModal('modal_add_Oriendador')">
+        <div class="card-header">
+          <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-person-plus" viewBox="0 0 16 16">
+            <path d="M6 8a3 3 0 1 0 0-6 3 3 0 0 0 0 6m2-3a2 2 0 1 1-4 0 2 2 0 0 1 4 0m4 8c0 1-1 1-1 1H1s-1 0-1-1 1-4 6-4 6 3 6 4m-1-.004c-.001-.246-.154-.986-.832-1.664C9.516 10.68 8.289 10 6 10s-3.516.68-4.168 1.332c-.678.678-.83 1.418-.832 1.664z"/>
+            <path fill-rule="evenodd" d="M13.5 5a.5.5 0 0 1 .5.5V7h1.5a.5.5 0 0 1 0 1H14v1.5a.5.5 0 0 1-1 0V8h-1.5a.5.5 0 0 1 0-1H13V5.5a.5.5 0 0 1 .5-.5"/>
+          </svg>
+          - Adicionar Orientador
+        </div>
+        <div class="card-body">
+          <button class="btn" onclick="openModal('modal_add_Oriendador')" style="background-color: transparent; border: none;"> Clique para Adicionar um Orientador.</button> 
+        </div>
+      </div>
+
+      <!-- Card para Add Tese -->
+      <div class="card mb-3" onclick="openModal('modal_add_tese')">
+        <div class="card-header">
+          <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-file-earmark-plus" viewBox="0 0 16 16">
+            <path d="M8 6.5a.5.5 0 0 1 .5.5v1.5H10a.5.5 0 0 1 0 1H8.5V11a.5.5 0 0 1-1 0V9.5H6a.5.5 0 0 1 0-1h1.5V7a.5.5 0 0 1 .5-.5"/>
+            <path d="M14 4.5V14a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V2a2 2 0 0 1 2-2h5.5zm-3 0A1.5 1.5 0 0 1 9.5 3V1H4a1 1 0 0 0-1 1v12a1 1 0 0 0 1 1h8a1 1 0 0 0 1-1V4.5z"/>
+          </svg>
+          - Adicionar Tese
+        </div>
+        <div class="card-body">
+          <button class="btn" onclick="openModal('modal_add_tese')" style="background-color: transparent; border: none;"> Clique para Adicionar Tese.</button> 
+        </div>
+      </div>
+    </div>
+  </nav>
+
+
+
+    <!-- Modal  criar aluno-->
+  <div id="modal_add_Sutdent" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog" style="max-width: 800px;"> <!-- Ajuste de tamanho da modal -->
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="exampleModalLabel">Cadastrar Novo Estudante</h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+
+          <form id="form_Aluno" onsubmit="add_user(event)">
+            <div class="form-group">
+                <label for="nome_Admin">Nome:</label>
+                <input type="text" class="form-control" id="nome_Aluno" name="nome" placeholder="Digite o nome" required>
+            </div>
+
+            <div class="form-group">
+                <label for="contacto_Admin">Contacto:</label>
+                <input type="text" class="form-control" id="contacto_Aluno" name="contacto" placeholder="Digite o contacto" required>
+            </div>
+
+            <div class="form-group">
+                <label for="email_Admin">Email:</label>
+                <input type="email" class="form-control" id="email_Aluno" name="email" placeholder="Digite o email" required>
+            </div>
+
+            <div class="form-group">
+                <label for="password_Admin">Senha:</label>
+                <input type="password" class="form-control" id="password_Aluno" name="password" placeholder="Digite a senha" required>
+            </div>
+
+            <div class="form-group">
+                <label for="id_curso_Admin">Mestrado:</label>
+                <select class="class_curso form-control" id="id_curso_Aluno" name="id_curso" required>
+                    <option value="">Selecione o Curso</option>
+                </select>
+            </div>
+
+            <div class="form-group">
+                <label for="foto_Aluno">Foto:</label>
+                <input type="file" class="form-control-file" id="foto_Aluno" name="foto" accept="image/*">
+            </div>
+
+
+            <div class="form-group">
+                <label for="id_polo_Aluno">Polo:</label>
+                <select class="class_polo form-control" id="id_polo_Aluno" name="id_polo" required>
+                    <option value="">Selecione o Polo</option>
+                </select>
+            </div>
+
+            <button type="submit" class="btn btn-primary">Cadastrar</button>
+        </form>
+      
+      </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Modal  criar Cordenador-->
+  <div id="modal_add_Cordenador" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog" style="max-width: 800px;"> 
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="exampleModalLabel">Cadastrar Novo Estudante</h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+
+          <form id="form_Coordenador" onsubmit="add_user(event)">
+            <div class="form-group">
+                <label for="nome_Coordenador">Nome:</label>
+                <input type="text" class="form-control" id="nome_Coordenador" name="nome" placeholder="Digite o nome" required>
+            </div>
+
+            <div class="form-group">
+                <label for="contacto_Coordenador">Contacto:</label>
+                <input type="text" class="form-control" id="contacto_Coordenador" name="contacto" placeholder="Digite o contacto" required>
+            </div>
+
+            <div class="form-group">
+                <label for="email_Coordenador">Email:</label>
+                <input type="email" class="form-control" id="email_Coordenador" name="email" placeholder="Digite o email" required>
+            </div>
+
+            <div class="form-group">
+                <label for="password_Coordenador">Senha:</label>
+                <input type="password" class="form-control" id="password_Coordenador" name="password" placeholder="Digite a senha" required>
+            </div>
+
+            <div class="form-group">
+              <label for="esp_Coordenador">Especialidade:</label>
+              <input type="text" class="form-control" id="esp_Coordenador" name="especialidade" placeholder="Digite a Especialidade" required>
           </div>
-          <div class="form-group">
-            <label for="descricao">Descrição:</label>
-            <textarea class="form-control" id="descricao" name="descricao" placeholder="Digite a descrição da tese"></textarea>
+
+            <div class="form-group mb-3">
+              <label for="Curiculo_Coordenador" class="form-label">Currículo (PDF):</label>
+              <input type="file" class="form-control" id="curriculo_Coordenador" name="curriculo" accept=".pdf"required>
+            </div>
+
+            <div class="form-group">
+                <label for="foto_Coordenador">Foto:</label>
+                <input type="file" class="form-control-file" id="foto_Coordenador" name="foto" accept="image/*">
+            </div>
+
+            <div class="form-group">
+                <label for="id_polo_Coordenador">Polo:</label>
+                <select class="class_polo form-control" id="id_polo_Coordenador" name="id_polo" required>
+                    <option value="">Selecione o Polo</option>
+                </select>
+            </div>
+
+            <button type="submit" class="btn btn-primary">Cadastrar</button>
+        </form>
+      
+      </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Modal  criar Curso-->
+  <div id="modal_add_course" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog" style="max-width: 800px;"> <!-- Ajuste de tamanho da modal -->
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="exampleModalLabel">Adicionar Mestrado</h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+
+          <form id="form_Curso" onsubmit="add_course(event)">
+
+            <div class="form-group">
+              <label for="nome_mestrado">Mestrado:</label>
+              <input type="text" class="form-control" id="nome_mestrado" name="nome_mestrado" placeholder="Digite o nome" required>
           </div>
-          <div class="form-group">
-            <label for="status">Status:</label>
-            <select class="form-control" id="status" name="status" required>
-              <option value="">Selecione o status</option>
-              <option value="Em Andamento">Em Andamento</option>
-              <option value="Concluída">Concluída</option>
-            </select>
-          </div>
-          <div class="form-group">
-            <label for="data_submissao">Data de Submissão:</label>
-            <input type="date" class="form-control" id="data_submissao" name="data_submissao">
-          </div>
-          <div class="form-group">
-            <label for="id_aluno">Aluno:</label>
-            <select class="class_alunos form-control" id="id_aluno" name="id_aluno" required>
-              <option value="">Selecione o aluno</option>
-            </select>
-          </div>
-          <div class="form-group">
-            <label for="id_orientador">Orientador:</label>
-            <select class="class_orientador form-control" id="id_orientador" name="id_orientador" required>
-              <option value="">Selecione o orientador</option>
-            </select>
-          </div>
-          <div class="form-group">
-            <label for="id_coordenador_tese">Coordenador:</label>
-            <select class="class_coordenador form-control" id="id_coordenador_tese" name="id_coordenador_tese" required>
-              <option value="">Selecione o coordenador</option>
-            </select>
+            <!-- <div class="form-group">
+                <label for="nome_Orientador">Orientador:</label>
+                <input type="text" class="form-control" id="nome_Orientador" name="nome_Orientador" placeholder="Digite o nome" required>
+            </div> -->
+
             
+              <div class="form-group">
+                <label for="id_Orientador:">Coordenador:</label>
+                <select class="class_orientador form-control" id="id_Orientador" name="id_Orientador" required>
+                    <option value="">Selecione o Orientador</option>
+                </select>
+                      
+              </div>
+            
+            
+            <div class="form-group">
+              <label for="class_polo">Polo:</label>
+              <select class="class_polo form-control" id="id_polo_Curso" name="id_polo" required>
+                  <option value="">Selecione o Polo</option>
+              </select>
           </div>
-        </div>
-        <div class="modal-footer">
-          <button type="submit" class="btn btn-primary">Adicionar</button>
-        </div>
-      </form>
+
+
+            <button type="submit" class="btn btn-primary">Adicionar</button>
+        </form>
+      
+      </div>
+      </div>
     </div>
   </div>
+
+  <!-- Modal  criar Orientador-->
+  <div id="modal_add_Oriendador" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog" style="max-width: 800px;"> 
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="exampleModalLabel">Cadastrar Novo Estudante</h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+
+          <form id="form_Oriendador" onsubmit="add_user(event)">
+            <div class="form-group">
+                <label for="nome_Oriendador">Nome:</label>
+                <input type="text" class="form-control" id="nome_Oriendador" name="nome" placeholder="Digite o nome" required>
+            </div>
+
+            <div class="form-group">
+                <label for="contacto_Oriendador">Contacto:</label>
+                <input type="text" class="form-control" id="contacto_Oriendador" name="contacto" placeholder="Digite o contacto" required>
+            </div>
+
+            <div class="form-group">
+                <label for="email_Oriendador">Email:</label>
+                <input type="email" class="form-control" id="email_Oriendador" name="email" placeholder="Digite o email" required>
+            </div>
+
+            <div class="form-group">
+                <label for="password_Oriendador">Senha:</label>
+                <input type="password" class="form-control" id="password_Oriendador" name="password" placeholder="Digite a senha" required>
+            </div>
+
+            <div class="form-group">
+              <label for="esp_Oriendador">Especialidade:</label>
+              <input type="text" class="form-control" id="esp_Oriendador" name="especialidade" placeholder="Digite a Especialidade" required>
+          </div>
+
+            <div class="form-group mb-3">
+              <label for="Curiculo_Oriendador" class="form-label">Currículo (PDF):</label>
+              <input type="file" class="form-control" id="curriculo_Oriendador" name="curriculo" accept=".pdf"required>
+            </div>
+
+            <div class="form-group">
+                <label for="foto_Oriendador">Foto:</label>
+                <input type="file" class="form-control-file" id="foto_Oriendador" name="foto" accept="image/*">
+            </div>
+
+            <div class="form-group">
+                <label for="id_polo_Oriendador">Polo:</label>
+                <select class="class_polo form-control" id="id_polo_Oriendador" name="id_polo" required>
+                    <option value="">Selecione o Polo</option>
+                </select>
+            </div>
+
+            <button type="submit" class="btn btn-primary">Cadastrar</button>
+        </form>
+      </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Modal Criar Tese -->
+  <div id="modal_add_tese" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog" style="max-width: 800px;">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="exampleModalLabel">Adicionar Tese</h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <form id="form_Tese" onsubmit="add_tese(event)">
+          <div class="modal-body">
+            <div class="form-group">
+              <label for="tema">Tema:</label>
+              <input type="text" class="form-control" id="tema" name="tema" placeholder="Digite o tema da tese" required>
+            </div>
+            <div class="form-group">
+              <label for="descricao">Descrição:</label>
+              <textarea class="form-control" id="descricao" name="descricao" placeholder="Digite a descrição da tese"></textarea>
+            </div>
+            <div class="form-group">
+              <label for="status">Status:</label>
+              <select class="form-control" id="status" name="status" required>
+                <option value="">Selecione o status</option>
+                <option value="Em Andamento">Em Andamento</option>
+                <option value="Concluída">Concluída</option>
+              </select>
+            </div>
+            <div class="form-group">
+              <label for="data_submissao">Data de Submissão:</label>
+              <input type="date" class="form-control" id="data_submissao" name="data_submissao">
+            </div>
+            <div class="form-group">
+              <label for="id_aluno">Aluno:</label>
+              <select class="class_alunos form-control" id="id_aluno" name="id_aluno" required>
+                <option value="">Selecione o aluno</option>
+              </select>
+            </div>
+            <div class="form-group">
+              <label for="id_orientador">Orientador:</label>
+              <select class="class_orientador form-control" id="id_orientador" name="id_orientador" required>
+                <option value="">Selecione o orientador</option>
+              </select>
+            </div>
+            <div class="form-group">
+              <label for="id_coordenador_tese">Coordenador:</label>
+              <select class="class_coordenador form-control" id="id_coordenador_tese" name="id_coordenador_tese" required>
+                <option value="">Selecione o coordenador</option>
+              </select>
+              
+            </div>
+          </div>
+          <div class="modal-footer">
+            <button type="submit" class="btn btn-primary">Adicionar</button>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+
+
+  <!--  CONTEUDO CENTRAL -->
+
+
+
+    <div class="col-lg-8 content">
+      <h2 class="text-center">Bem-vindo!</h2>
+      <p class="text-center">Você iniciou sessão no Sistema.</p>
+      <!-- Link para o painel admin visível para admins -->
+      <div class="text-center mt-4" style="display: none;" id="adminLink">
+        <a href="../admin/admin.html" class="btn btn-warning">Ir para o Admin</a>
+      </div>
+    </div>
+  </div>  
 </div>
-
-
-<!--  CONTEUDO CENTRAL -->
-
-
-
-  <div class="content">
-    <h2 class="text-center">Bem-vindo!</h2>
-    <p class="text-center">Você iniciou sessão no Sistema.</p>
-     <!-- Link para o painel admin visível para admins -->
-     <div class="text-center mt-4" style="display: none;" id="adminLink">
-      <a href="../admin/admin.html" class="btn btn-warning">Ir para o Admin</a>
-    </div>
-  </div>
-
 
   <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.5/dist/umd/popper.min.js"></script>

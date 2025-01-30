@@ -94,9 +94,9 @@ function popularTabela(usuariosParaMostrar) {
           <td>${usuario.nome_orientador || "Sem Orientador"}</td>
           <td>${usuario.estado_tese || "Sem Estado"}</td>
           <td>${usuario.data_defesa || "Sem Data"}</td>
-         <td>
-    ${usuario.documento_tese ? `<a href="/download/${usuario.documento_tese}" target="_blank">Abrir Documento</a>` : "Sem Documento"}
-</td>
+          <td>
+            ${usuario.documento_tese ? `<a href="/download/${usuario.documento_tese}" target="_blank">Abrir Documento</a>` : "Sem Documento"}
+          </td>
           <td>
               <button class="btn btn-warning btn-sm" data-toggle="modal" data-target="#editModal" onclick="editarUsuario(${usuario.id_user})"><i class="fas fa-edit"></i>Editar</button>
               <button class="btn btn-danger btn-sm" data-toggle="modal" data-target="#deleteModal" onclick="setUserIdToDelete(${usuario.id_user})"><i class="fas fa-trash-alt">Excluir</button>

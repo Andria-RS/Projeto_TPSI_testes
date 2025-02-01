@@ -47,41 +47,49 @@
         <div class="modal-content">
           <div class="modal-header">
             <h5 class="modal-title">Editar Usuário</h5>
-            <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+            <button  type="button" class="btn-close" data-dismiss="modal" aria-label="Fechar"></button>
           </div>
+
           <div class="modal-body">
             <form>
-              <div class="mb-3">
-                <label for="editNome" class="form-label">Nome</label>
-                <input type="text" class="form-control" id="editNome" />
+
+              <h6>Informações Curriculares</h6>
+              <div class="row g-3 align-items-center">
+                <div class="col-md-6">
+                  <label for="editNome" class="form-label">Nome</label>
+                  <input type="text" class="form-control" id="editNome" />
+                </div>
+                <div class="col-md-6">
+                  <label for="editEmail" class="form-label">Email</label>
+                  <input type="email" class="form-control" id="editEmail" />
+                </div>
+                <div class="col-md-6">
+                  <label for="editPassword" class="form-label">Password</label>
+                  <input type="password" class="form-control" id="editPassword" />
+                </div>
+                <div class="col-md-6">
+                  <label for="editPassword" class="form-label">Confirmar Password</label>
+                  <input type="password" class="form-control" id="editPasswordCofirmacions" />
+                </div>
+                <div class="col-md-6">
+                  <label for="editContacto" class="form-label">Contacto</label>
+                  <input type="text" class="form-control" id="editContacto" />
+                </div>
               </div>
-              <div class="mb-3">
-                <label for="editEmail" class="form-label">Email</label>
-                <input type="email" class="form-control" id="editEmail" />
-              </div>
-              <div class="mb-3">
-                <label for="editPassword" class="form-label">Password</label>
-                <input type="password" class="form-control" id="editPassword" />
-              </div>
-              <div class="mb-3">
-                <label for="editPassword" class="form-label">Confirmar Password</label>
-                <input type="password" class="form-control" id="editPasswordCofirmacions" />
-              </div>
-              <div class="mb-3">
-                <label for="editContacto" class="form-label">Contacto</label>
-                <input type="text" class="form-control" id="editContacto" />
-              </div>
+
+              <h6 class="mt-4 mb-3">Informações Curriculares</h6>
               <div class="mb-3">
                 <label for="editCurriculo" class="form-label">Currículo</label>
-                <textarea class="form-control" id="editCurriculo"></textarea>
+                <input type="file" class="form-control" id="editCurriculo" name="curriculo" accept=".pdf"
+                  required></input>
               </div>
 
 
             </form>
           </div>
           <div class="modal-footer">
-            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
-            <button type="button" class="btn btn-primary" onclick="salvarEdicaoUsuario()">Salvar Alterações</button>
+            <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancelar</button>
+            <button type="button" class="btn btn-dark" onclick="salvarEdicaoUsuario()">Salvar Alterações</button>
           </div>
         </div>
       </div>
@@ -120,11 +128,12 @@
           <!-- Formulário -->
           <form id="form_Admin" onsubmit="add_user(event)">
             <div class="modal-body">
-              
+
               <!-- Tipo de Utilizador -->
               <div class="mb-4">
                 <label for="id_tipo_utilizador_Admin" class="form-label">Tipo de Utilizador:</label>
-                <select class="class_tipo_utilizador form-select" id="id_tipo_utilizador_Admin" name="id_tipo_utilizador" required>
+                <select class="class_tipo_utilizador form-select" id="id_tipo_utilizador_Admin"
+                  name="id_tipo_utilizador" required>
                   <option value="">Selecione o tipo de utilizador</option>
                 </select>
               </div>

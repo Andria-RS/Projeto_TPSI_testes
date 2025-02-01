@@ -204,9 +204,45 @@
           </div>
         </div>
       </div>
+
     </div>
 
 </div>
+
+
+<!-- Modal -->
+<div class="modal fade" id="submitAvaliationModal" tabindex="-1" aria-labelledby="submitThesisModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+      <div class="modal-content">
+          <div class="modal-header">
+              <h5 class="modal-title" id="submitThesisModalLabel">Submeter Avaliação Tese</h5>
+              <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+          </div>
+          <div class="modal-body">
+              <form id="submitAvaliationModal">
+                  <div class="mb-3">
+                      <label for="thesisTitle" class="form-label">Título da Tese</label>
+                      <input type="text" class="form-control" id="thesisTitle" name="thesisTitle" required>
+                  </div>
+                  <div class="mb-3">
+                    <label for="status">Status:</label>
+                    <select class="form-control" id="status_tese" name="status" required>
+                      <option value="">Selecione o status</option>
+                      <option value="Em Andamento">Em Andamento</option>
+                      <option value="Concluída">Concluída</option>
+                    </select>
+                  </div>
+                  <div class="mb-3">
+                      <label for="thesisFile" class="form-label">Selecione o Arquivo</label>
+                      <input type="file" class="form-control" id="thesisFile" name="thesisFile" accept=".pdf" required>
+                  </div>
+                  <button type="submit" class="btn btn-primary">Enviar</button>
+              </form>
+          </div>
+      </div>
+  </div>
+</div>
+
 
 
 

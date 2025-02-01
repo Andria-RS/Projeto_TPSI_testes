@@ -261,12 +261,13 @@ document.addEventListener('DOMContentLoaded', function() {
         formData.append("email", document.getElementById(`email${prefix}`)?.value || "");
         formData.append("password", document.getElementById(`password${prefix}`)?.value || "");
         formData.append("contacto", document.getElementById(`contacto${prefix}`)?.value || "");
-        formData.append("especialidade", document.getElementById(`esp${prefix}`)?.value || "");
+       
         formData.append("id_polo", formElement.querySelector('.class_polo')?.value || "");
        
         if (formId === "form_Aluno") {
           formData.append("curso", document.querySelector('.class_curso')?.value || "");
           formData.append("id_tipo_utilizador", 2); // Tipo fixo para alunos
+          formData.append("especialidade", document.getElementById(`esp${prefix}`)?.value || "");
           
         } else if (formId === "form_Admin") {
           formData.append("id_tipo_utilizador", document.querySelector('.class_tipo_utilizador')?.value || "");
@@ -274,9 +275,20 @@ document.addEventListener('DOMContentLoaded', function() {
          
         }else if (formId === "form_Coordenador") {
           formData.append("id_tipo_utilizador", 4); 
+          formData.append("especialidade", document.getElementById(`esp${prefix}`)?.value || "");
+
+          const pdfInput = document.getElementById(`curriculo${prefix}`); // Input para PDF
+             if (pdfInput?.files?.length > 0) {
+            formData.append("curriculo", pdfInput.files[0]); // Adiciona o arquivo PDF ao FormData
+         }
           
         }else if (formId === "form_Oriendador") {
           formData.append("id_tipo_utilizador", 3); 
+          formData.append("especialidade", document.getElementById(`esp${prefix}`)?.value || "");
+          const pdfInput = document.getElementById(`curriculo${prefix}`); // Input para PDF
+            if (pdfInput?.files?.length > 0) {
+            formData.append("curriculo", pdfInput.files[0]); // Adiciona o arquivo PDF ao FormData
+         }
         }
 
         // Adiciona a foto ao FormData, se selecionada
@@ -285,10 +297,7 @@ document.addEventListener('DOMContentLoaded', function() {
           formData.append("foto", fotoInput.files[0]); // Adiciona o arquivo diretamente
         }
 
-        const pdfInput = document.getElementById(`curriculo${prefix}`); // Input para PDF
-        if (pdfInput?.files?.length > 0) {
-            formData.append("curriculo", pdfInput.files[0]); // Adiciona o arquivo PDF ao FormData
-         }
+        
 
         console.log("Dados a serem enviados:", formData);
         console.log("Todos os dados no FormData:");
@@ -355,8 +364,6 @@ document.addEventListener('DOMContentLoaded', function() {
               <td>${usuario.nome}</td>
               <td>${usuario.email}</td>
               <td>${usuario.contacto}</td>
-              <td>${usuario.curriculo}</td>
-              <td>${usuario.especialidade}</td>
               <td>${usuario.Tipo_utilizador}</td>
               <td>${usuario.Polo}</td>
               <td>

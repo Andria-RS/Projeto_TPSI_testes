@@ -40,10 +40,7 @@ function popularTabela(usuariosParaMostrar) {
           <td>${usuario.nome_orientador || "Sem Orientador"}</td>
           <td>${usuario.estado_tese || "Sem Estado"}</td>
           <td>${usuario.data_defesa || "Sem Data"}</td>
-          <td>
-              <button class="btn btn-warning btn-sm" data-toggle="modal" data-target="#editModal" onclick="editarUsuario(${usuario.id_user})">Editar</button>
-              <button class="btn btn-danger btn-sm" data-toggle="modal" data-target="#deleteModal" onclick="setUserIdToDelete(${usuario.id_user})">Excluir</button>
-          </td>
+          
         `;
         tbody.appendChild(tr);
     });
@@ -94,83 +91,3 @@ function gerarPDF() {
             console.error('Erro ao gerar o PDF:', error);
         });
 }
-
-
-  /*
-// Função para popular a tabela
-function popularTabela(usuariosParaMostrar) {
-    const tbody = document.getElementById("tabela_Search");
-
-    if (!tbody) {
-        console.error('Elemento com ID "tabela_Search" não encontrado no DOM.');
-        return;
-    }
-
-    tbody.innerHTML = ""; // Limpa o conteúdo existente da tabela
-
-    usuariosParaMostrar.forEach(usuario => {
-        const tr = document.createElement("tr");
-        tr.innerHTML = `
-          <td>${usuario.nome || "N/A"}</td>
-          <td>${usuario.tema || "Sem Tema"}</td>
-          <td>${usuario.nome_orientador || "Sem Orientador"}</td>
-          <td>${usuario.estado_tese || "Sem Estado"}</td>
-          <td>${usuario.data_defesa || "Sem Data"}</td>
-         <td>
-    ${usuario.documento_tese ? `<a href="/download/${usuario.documento_tese}" target="_blank">Abrir Documento</a>` : "Sem Documento"}
-</td>
-          <td>
-              <button class="btn btn-warning btn-sm" data-toggle="modal" data-target="#editModal" onclick="editarUsuario(${usuario.id_user})">Editar</button>
-              <button class="btn btn-danger btn-sm" data-toggle="modal" data-target="#deleteModal" onclick="setUserIdToDelete(${usuario.id_user})">Excluir</button>
-          </td>
-        `;
-        tbody.appendChild(tr);
-    });
-
-    console.log("Tabela preenchida com os usuários:", usuariosParaMostrar);
-}
-
-// Função para inicializar
-document.addEventListener("DOMContentLoaded", () => {
-    getsUsers();
-});
-
-function gerarPDF() {
-    const tabela = document.getElementById('tabela_Search');
-    const rows = [];
-  
-    // Capturar os dados da tabela
-    for (const row of tabela.rows) {
-      const cells = row.cells;
-      rows.push({
-        nome: cells[0].innerText,
-        email: cells[1].innerText,
-        contacto: cells[2].innerText,
-        tese: cells[3].innerText,
-        especialidade: cells[4].innerText,
-        tipo: cells[5].innerText,
-        polo: cells[6].innerText,
-      });
-    }
-  
-    // Enviar os dados ao servidor
-    fetch('/api/generate-pdf', {
-      method: 'POST',
-      headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify({ rows }),
-    })
-      .then((response) => response.blob())
-      .then((blob) => {
-        const url = window.URL.createObjectURL(blob);
-        const a = document.createElement('a');
-        a.href = url;
-        a.download = 'tabela-usuarios.pdf';
-        document.body.appendChild(a);
-        a.click();
-        a.remove();
-      })
-      .catch((error) => {
-        console.error('Erro ao gerar o PDF:', error);
-      });
-  }
-  */

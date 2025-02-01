@@ -6,6 +6,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
   <link rel="stylesheet" href="\aplicacao\sytles\styles.css">
+  <link href="https://cdn.jsdelivr.net/npm/remixicon@2.5.0/fonts/remixicon.css" rel="stylesheet">
   <script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
   <title>Página Inicial</title>
   <script>
@@ -36,6 +37,21 @@
           alert("Erro ao fazer logout: " + error.message);
         });
     }
+
+    function togglePassword(inputId, iconId) {
+      const passwordField = document.getElementById(inputId);
+      const toggleIcon = document.getElementById(iconId);
+
+      if (passwordField.type === "password") {
+        passwordField.type = "text";
+        toggleIcon.classList.remove('ri-eye-line');
+        toggleIcon.classList.add('ri-eye-off-line');
+      } else {
+        passwordField.type = "password";
+        toggleIcon.classList.remove('ri-eye-off-line');
+        toggleIcon.classList.add('ri-eye-line');
+      }
+    }
   </script>
 </head>
 
@@ -47,7 +63,7 @@
     <div class="row">
 
       <!--  CONTEUDO SIDEBAR -->
-      <nav class="col-lg-4 mt-5 d-md-block bg-light sidebar p-3 vh-100">
+      <nav class="col-sm-4 mt-5 sidebar p-3">
         <div class="list-group">
 
           <!-- Card para Documentos -->
@@ -154,25 +170,6 @@
                 style="background-color: transparent; border: none;"> Clique para Adicionar Tese.</button>
             </div>
           </div>
-
-
-          <!-- Card para Criar Juri -->
-          <div class="card">
-            <div class="card-header">
-              <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
-                class="bi bi-person-plus" viewBox="0 0 16 16">
-                <path
-                  d="M6 8a3 3 0 1 0 0-6 3 3 0 0 0 0 6m2-3a2 2 0 1 1-4 0 2 2 0 0 1 4 0m4 8c0 1-1 1-1 1H1s-1 0-1-1 1-4 6-4 6 3 6 4m-1-.004c-.001-.246-.154-.986-.832-1.664C9.516 10.68 8.289 10 6 10s-3.516.68-4.168 1.332c-.678.678-.83 1.418-.832 1.664z" />
-                <path fill-rule="evenodd"
-                  d="M13.5 5a.5.5 0 0 1 .5.5V7h1.5a.5.5 0 0 1 0 1H14v1.5a.5.5 0 0 1-1 0V8h-1.5a.5.5 0 0 1 0-1H13V5.5a.5.5 0 0 1 .5-.5" />
-              </svg>
-              - Criar Júri
-            </div>
-            <div class="card-body">
-              <button class="btn" style="background-color: transparent; border: none;"> Clique para Criar um
-                Júri.</button>
-            </div>
-          </div>
         </div>
       </nav>
 
@@ -188,44 +185,47 @@
             </div>
             <form id="form_Aluno" onsubmit="add_user(event)">
               <div class="modal-body">
-
                 <h6 class="mb-3">Informações pessoais</h6>
                 <div class="row g-3 align-items-center">
                   <div class="col-md-12">
                     <label for="foto_Aluno" class="form-label">Foto de perfil:</label>
                     <input type="file" class="form-control" id="foto_Aluno" name="foto" accept="image/*">
                   </div>
-
                   <div class="col-md-12">
                     <div class="row g-3">
                       <div class="col-md-6">
-                        <label for="nome_Admin" class="form-label">Nome:</label>
+                        <label for="nome_Aluno" class="form-label">Nome:</label>
                         <input type="text" class="form-control" id="nome_Aluno" name="nome" placeholder="Digite o nome"
                           required>
                       </div>
                       <div class="col-md-6">
-                        <label for="contacto_Admin" class="form-label">Contacto:</label>
+                        <label for="contacto_Aluno" class="form-label">Contacto:</label>
                         <input type="text" class="form-control" id="contacto_Aluno" name="contacto"
                           placeholder="Digite o contacto" required>
                       </div>
                       <div class="col-md-6">
-                        <label for="email_Admin" class="form-label">Email:</label>
+                        <label for="email_Aluno" class="form-label">Email:</label>
                         <input type="email" class="form-control" id="email_Aluno" name="email"
                           placeholder="Digite o email" required>
                       </div>
                       <div class="col-md-6">
-                        <label for="password_Admin" class="form-label">Senha:</label>
-                        <input type="password" class="form-control" id="password_Aluno" name="password"
-                          placeholder="Digite a senha" required>
+                        <label for="password_Aluno" class="form-label">Senha:</label>
+                        <div class="input-group">
+                          <input type="password" class="form-control" id="password_Aluno" name="password"
+                            placeholder="Digite a senha" required>
+                            <button class="btn btn-outline-secondary" type="button"
+                            onclick="togglePassword('password_Aluno', 'eye_icon')">
+                            <i id="eye_icon" class="ri-eye-line"></i>
+                          </button>
+                        </div>
                       </div>
                     </div>
                   </div>
                 </div>
-
                 <h6 class="mt-4 mb-3">Informações Curriculares</h6>
                 <div class="row g-3">
                   <div class="col-md-6">
-                    <label for="id_curso_Admin">Mestrado:</label>
+                    <label for="id_curso_Aluno">Mestrado:</label>
                     <select class="class_curso form-select" id="id_curso_Aluno" name="id_curso" required>
                       <option value="">Selecione o Curso</option>
                     </select>
@@ -289,8 +289,14 @@
 
                       <div class="col-md-6">
                         <label for="password_Coordenador" class="form-label">Senha:</label>
-                        <input type="password" class="form-control" id="password_Coordenador" name="password"
-                          placeholder="Digite a senha" required>
+                        <div class="input-group">
+                          <input type="password" class="form-control" id="password_Coordenador" name="password"
+                            placeholder="Digite a senha" required>
+                            <button class="btn btn-outline-secondary" type="button"
+                            onclick="togglePassword('password_Coordenador', 'eye_icon')">
+                            <i id="eye_icon" class="ri-eye-line"></i>
+                          </button>
+                        </div>
                       </div>
                     </div>
                   </div>
@@ -313,7 +319,8 @@
 
                   <div class="mb-3">
                     <label for="Curiculo_Coordenador" class="form-label">Currículo (PDF):</label>
-                    <input type="file" class="form-control" id="curriculo_Coordenador" name="curriculo" accept=".pdf"required>
+                    <input type="file" class="form-control" id="curriculo_Coordenador" name="curriculo" accept=".pdf"
+                      required>
                   </div>
                 </div>
                 <div class="modal-footer">
@@ -324,6 +331,7 @@
         </div>
       </div>
     </div>
+
 
     <!-- Modal  criar Curso-->
     <div id="modal_add_course" class="modal fade" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
@@ -370,67 +378,74 @@
     </div>
 
     <!-- Modal  criar Orientador-->
-    <div id="modal_add_Oriendador" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+    <div id="modal_add_Oriendador" class="modal fade" tabindex="-1" aria-labelledby="exampleModalLabel"
       aria-hidden="true">
-      <div class="modal-dialog" style="max-width: 800px;">
+      <div class="modal-dialog modal-lg">
         <div class="modal-content">
           <div class="modal-header">
             <h5 class="modal-title" id="exampleModalLabel">Adicionar Novo Orientador</h5>
-            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-              <span aria-hidden="true">&times;</span>
-            </button>
+            <button type="button" class="btn-close" data-dismiss="modal" aria-label="Fechar"></button>
           </div>
 
           <form id="form_Oriendador" onsubmit="add_user(event)">
-            <div class="form-group">
-              <label for="nome_Oriendador">Nome:</label>
-              <input type="text" class="form-control" id="nome_Oriendador" name="nome" placeholder="Digite o nome"
-                required>
-            </div>
+            <div class="modal-body">
 
-            <div class="form-group">
-              <label for="contacto_Oriendador">Contacto:</label>
-              <input type="text" class="form-control" id="contacto_Oriendador" name="contacto"
-                placeholder="Digite o contacto" required>
-            </div>
+              <div class="row g-3 align-items-center">
+                <div class="form-group">
+                  <label for="foto_Oriendador">Foto:</label>
+                  <input type="file" class="form-control" id="foto_Oriendador" name="foto" accept="image/*">
+                </div>
 
-            <div class="form-group">
-              <label for="email_Oriendador">Email:</label>
-              <input type="email" class="form-control" id="email_Oriendador" name="email" placeholder="Digite o email"
-                required>
-            </div>
+                <div class="col-md-6">
+                  <label for="nome_Oriendador">Nome:</label>
+                  <input type="text" class="form-control" id="nome_Oriendador" name="nome" placeholder="Digite o nome"
+                    required>
+                </div>
 
-            <div class="form-group">
-              <label for="password_Oriendador">Senha:</label>
-              <input type="password" class="form-control" id="password_Oriendador" name="password"
-                placeholder="Digite a senha" required>
-            </div>
+                <div class="col-md-6">
+                  <label for="contacto_Oriendador">Contacto:</label>
+                  <input type="text" class="form-control" id="contacto_Oriendador" name="contacto"
+                    placeholder="Digite o contacto" required>
+                </div>
 
-            <div class="form-group">
-              <label for="esp_Oriendador">Especialidade:</label>
-              <input type="text" class="form-control" id="esp_Oriendador" name="especialidade"
-                placeholder="Digite a Especialidade" required>
-            </div>
+                <div class="col-md-6">
+                  <label for="email_Oriendador">Email:</label>
+                  <input type="email" class="form-control" id="email_Oriendador" name="email"
+                    placeholder="Digite o email" required>
+                </div>
 
-            <div class="form-group mb-3">
-              <label for="Curiculo_Oriendador" class="form-label">Currículo (PDF):</label>
-              <input type="file" class="form-control" id="curriculo_Oriendador" name="curriculo" accept=".pdf" required>
-            </div>
+                <div class="col-md-6">
+                  <label for="password_Oriendador">Senha:</label>
+                  <input type="password" class="form-control" id="password_Oriendador" name="password"
+                    placeholder="Digite a senha" required>
+                </div>
+              </div>
 
-            <div class="form-group">
-              <label for="foto_Oriendador">Foto:</label>
-              <input type="file" class="form-control-file" id="foto_Oriendador" name="foto" accept="image/*">
-            </div>
+              <h6 class="mt-4 mb-3">Informações Curriculares</h6>
+              <div class="row g-3">
+                <div class="col-md-6">
+                  <label for="esp_Oriendador">Especialidade:</label>
+                  <input type="text" class="form-control" id="esp_Oriendador" name="especialidade"
+                    placeholder="Digite a Especialidade" required>
+                </div>
 
-            <div class="form-group">
-              <label for="id_polo_Oriendador">Polo:</label>
-              <select class="class_polo form-control" id="id_polo_Oriendador" name="id_polo" required>
-                <option value="">Selecione o Polo</option>
-              </select>
-            </div>
+                <div class="col-md-6">
+                  <label for="id_polo_Oriendador">Polo:</label>
+                  <select class="class_polo form-select" id="id_polo_Oriendador" name="id_polo" required>
+                    <option value="">Selecione o Polo</option>
+                  </select>
+                </div>
 
-            <div class="modal-footer">
-              <button type="submit" class="btn btn-dark">Cadastrar</button>
+                <div class="form-group mb-3">
+                  <label for="Curiculo_Oriendador" class="form-label">Currículo (PDF):</label>
+                  <input type="file" class="form-control" id="curriculo_Oriendador" name="curriculo" accept=".pdf"
+                    required>
+                </div>
+              </div>
+
+              <div class="modal-footer">
+                <button type="submit" class="btn btn-dark">Cadastrar</button>
+              </div>
             </div>
           </form>
         </div>
@@ -440,61 +455,68 @@
     <!-- Modal Criar Tese -->
     <div id="modal_add_tese" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
       aria-hidden="true">
-      <div class="modal-dialog" style="max-width: 800px;">
+      <div class="modal-dialog modal-lg">
         <div class="modal-content">
           <div class="modal-header">
             <h5 class="modal-title" id="exampleModalLabel">Adicionar Tese</h5>
-            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-              <span aria-hidden="true">&times;</span>
-            </button>
+            <button type="button" class="btn-close" data-dismiss="modal" aria-label="Close"></button>
           </div>
+
           <form id="form_Tese" onsubmit="add_tese(event)">
             <div class="modal-body">
-              <div class="form-group">
-                <label for="tema">Tema:</label>
-                <input type="text" class="form-control" id="tema" name="tema" placeholder="Digite o tema da tese"
-                  required>
-              </div>
-              <div class="form-group">
-                <label for="descricao">Descrição:</label>
-                <textarea class="form-control" id="descricao" name="descricao"
-                  placeholder="Digite a descrição da tese"></textarea>
-              </div>
-              <div class="form-group">
-                <label for="status">Status:</label>
-                <select class="form-control" id="status" name="status" required>
-                  <option value="">Selecione o status</option>
-                  <option value="Em Andamento">Em Andamento</option>
-                  <option value="Concluída">Concluída</option>
-                </select>
-              </div>
-              <div class="form-group">
-                <label for="data_submissao">Data de Submissão:</label>
-                <input type="date" class="form-control" id="data_submissao" name="data_submissao">
-              </div>
-              <div class="form-group">
-                <label for="id_aluno">Aluno:</label>
-                <select class="class_alunos form-control" id="id_aluno" name="id_aluno" required>
-                  <option value="">Selecione o aluno</option>
-                </select>
-              </div>
-              <div class="form-group">
-                <label for="id_orientador">Orientador:</label>
-                <select class="class_orientador form-control" id="id_orientador" name="id_orientador" required>
-                  <option value="">Selecione o orientador</option>
-                </select>
-              </div>
-              <div class="form-group">
-                <label for="id_coordenador_tese">Coordenador:</label>
-                <select class="class_coordenador form-control" id="id_coordenador_tese" name="id_coordenador_tese"
-                  required>
-                  <option value="">Selecione o coordenador</option>
-                </select>
 
+              <h6 class="mt-4 mb-3">Entidades da Tese</h6>
+              <div class="row g-3">
+                <div class="col-md-6">
+                  <label for="id_aluno">Aluno:</label>
+                  <select class="class_alunos form-select" id="id_aluno" name="id_aluno" required>
+                    <option value="">Selecione o aluno</option>
+                  </select>
+                </div>
+                <div class="col-md-6">
+                  <label for="id_orientador">Orientador:</label>
+                  <select class="class_orientador form-select" id="id_orientador" name="id_orientador" required>
+                    <option value="">Selecione o orientador</option>
+                  </select>
+                </div>
+                <div class="col-md-6">
+                  <label for="id_coordenador_tese">Coordenador:</label>
+                  <select class="class_coordenador form-select" id="id_coordenador_tese" name="id_coordenador_tese"
+                    required>
+                    <option value="">Selecione o coordenador</option>
+                  </select>
+                </div>
+              </div>
+
+              <h6 class="mt-4 mb-3">Informações da Tese</h6>
+              <div class="row g-3">
+                <div class="col-md-6">
+                  <label for="tema">Tema:</label>
+                  <input type="text" class="form-control" id="tema" name="tema" placeholder="Digite o tema da tese"
+                    required>
+                </div>
+                <div class="col-md-6">
+                  <label for="descricao">Descrição:</label>
+                  <textarea class="form-control" id="descricao" name="descricao"
+                    placeholder="Digite a descrição da tese"></textarea>
+                </div>
+                <div class="col-md-6">
+                  <label for="status">Status:</label>
+                  <select class="form-select" id="status" name="status" required>
+                    <option value="">Selecione o status</option>
+                    <option value="Em Andamento">Em Andamento</option>
+                    <option value="Concluída">Concluída</option>
+                  </select>
+                </div>
+                <div class="col-md-6">
+                  <label for="data_submissao">Data de Submissão:</label>
+                  <input type="date" class="form-control" id="data_submissao" name="data_submissao">
+                </div>
               </div>
             </div>
+
             <div class="modal-footer">
-              <button type="submit" class="btn btn-primary">Adicionar</button>
+              <button type="submit" class="btn btn-dark">Adicionar</button>
             </div>
           </form>
         </div>
@@ -503,7 +525,7 @@
 
 
     <!--  CONTEUDO CENTRAL -->
-    <div class="col-lg-8 content py-5 p-5 mt-5">
+    <div class="col-sm-8 content py-5 p-5 mt-5">
       <h2 class="text-center">Bem-vindo!</h2>
       <p class="text-center">Você iniciou sessão no Sistema.</p>
       <!-- Link para o painel admin visível para admins -->
@@ -514,7 +536,7 @@
   </div>
   </div>
 
-  <footer class="bg-light text-center py-3">
+  <footer class="bg-light text-center py-3 fixed-bottom">
     <div class="container">
       <p class="mb-1">&copy; Instituto Politécnico de Viana do Castelo • Gestor de Teses • 2024</p>
     </div>
@@ -527,7 +549,6 @@
   <script src="../auxiliador\auxiliador_email.js"></script>
   <script src="../auxiliador\loadNavbar.js"></script>
 
-</body>
 </body>
 
 </html>

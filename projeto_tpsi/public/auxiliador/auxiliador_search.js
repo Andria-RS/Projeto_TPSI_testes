@@ -34,7 +34,7 @@ function popularTabela(usuariosParaMostrar) {
     usuariosParaMostrar.forEach(usuario => {
         const tr = document.createElement("tr");
         tr.innerHTML = `
-          <td>${usuario.id_user || "N/A"}</td>
+          <td scope="col">${usuario.id_user || "N/A"}</td>
           <td>${usuario.nome || "N/A"}</td>
           <td>${usuario.tema || "Sem Tema"}</td>
           <td>${usuario.nome_orientador || "Sem Orientador"}</td>

@@ -41,18 +41,18 @@
       </div>
     </div>
 
-    <table class="table table-striped table-bordered">
+    <table class="table table-striped">
       <thead>
         <tr>
-          <th>Nome</th>
-          <th>Email</th>
-          <th>Contacto</th>
-          <th>Tipo de Utilizador</th>
-          <th>Polo</th>
-          <th style="width: 165px;">Ações</th>
+          <th scope="col">Nome</th>
+          <th scope="col">Email</th>
+          <th scope="col">Contacto</th>
+          <th scope="col">Tipo de Utilizador</th>
+          <th scope="col">Polo</th>
+          <th scope="col" style="width: 165px;">Ações</th>
         </tr>
       </thead>
-      <tbody id="tabela-usuarios">
+      <tbody id="tabela-usuarios" class="table-group-divider">
         <!-- Linhas serão geradas dinamicamente -->
       </tbody>
     </table>
@@ -66,7 +66,7 @@
           </div>
           <div class="modal-body">
             <form>
-              <h6>Informações Curriculares</h6>
+              <h6>Informações Pessoais</h6>
               <div class="row g-3 align-items-center">
                 <div class="col-md-6">
                   <label for="editNome" class="form-label">Nome</label>

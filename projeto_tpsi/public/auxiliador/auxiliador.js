@@ -492,10 +492,10 @@ function salvarEdicaoUsuario() {
     password,
     contacto,
     curriculo,
-    especialidade,
+   // especialidade,
     tipo_User,
-    data,
-    id_polo: idPolo,
+   // data,
+    //id_polo: idPolo,
   };
 
   fetch(`/api/edit_user`, {

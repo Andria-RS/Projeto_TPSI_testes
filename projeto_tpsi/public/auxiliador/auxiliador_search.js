@@ -173,4 +173,4 @@ function gerarPDF() {
         console.error('Erro ao gerar o PDF:', error);
       });
   }
-  */ 
+  */

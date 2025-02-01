@@ -14,7 +14,7 @@
   function togglePassword(inputId, iconId) {
     const passwordField = document.getElementById(inputId);
     const toggleIcon = document.getElementById(iconId);
-    
+
     if (passwordField.type === "password") {
       passwordField.type = "text";
       toggleIcon.classList.remove('ri-eye-line');
@@ -190,8 +190,14 @@
                     </div>
                     <div class="col-md-6">
                       <label for="password_Admin">Senha:</label>
-                      <input type="password" class="form-control" id="password_Admin" name="password"
-                        placeholder="Digite a senha" required>
+                      <div class="input-group">
+                        <input type="password" class="form-control" id="password_Admin" name="password"
+                          placeholder="Digite a senha" required>
+                        <button class="btn btn-outline-secondary" type="button"
+                          onclick="togglePassword('password_Admin', 'eye_icon')">
+                          <i id="eye_icon" class="ri-eye-line"></i>
+                        </button>
+                      </div>
                     </div>
                   </div>
                 </div>

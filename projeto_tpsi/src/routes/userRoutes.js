@@ -16,8 +16,11 @@ router.post("/add_course", userController.add_course);
 router.get("/getAllUsersbyCordenador", userController.getAllUsersbyCordenador);
 router.post("/add_tese", userController.add_tese);
 router.put("/submit-document", teseController.update_tese);
+
+//router.post("/submit-evaluation", teseController.createEvaluation);
 router.get("/getUserPerfil/:userId", userController.getUserPerfil);
 
+router.get("/getInfoToCordenador", userController.getInfoToCordenador);
 
 
 module.exports = router;

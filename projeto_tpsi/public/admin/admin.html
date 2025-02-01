@@ -7,8 +7,25 @@
   <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+  <link href="https://cdn.jsdelivr.net/npm/remixicon@2.5.0/fonts/remixicon.css" rel="stylesheet">
   <title>Painel Admin</title>
 </head>
+<script>
+  function togglePassword(inputId, iconId) {
+    const passwordField = document.getElementById(inputId);
+    const toggleIcon = document.getElementById(iconId);
+    
+    if (passwordField.type === "password") {
+      passwordField.type = "text";
+      toggleIcon.classList.remove('ri-eye-line');
+      toggleIcon.classList.add('ri-eye-off-line');
+    } else {
+      passwordField.type = "password";
+      toggleIcon.classList.remove('ri-eye-off-line');
+      toggleIcon.classList.add('ri-eye-line');
+    }
+  }
+</script>
 
 <body>
   <div id="navbar"></div>
@@ -47,12 +64,10 @@
         <div class="modal-content">
           <div class="modal-header">
             <h5 class="modal-title">Editar Usuário</h5>
-            <button  type="button" class="btn-close" data-dismiss="modal" aria-label="Fechar"></button>
+            <button type="button" class="btn-close" data-dismiss="modal" aria-label="Fechar"></button>
           </div>
-
           <div class="modal-body">
             <form>
-
               <h6>Informações Curriculares</h6>
               <div class="row g-3 align-items-center">
                 <div class="col-md-6">
@@ -65,26 +80,34 @@
                 </div>
                 <div class="col-md-6">
                   <label for="editPassword" class="form-label">Password</label>
-                  <input type="password" class="form-control" id="editPassword" />
+                  <div class="input-group">
+                    <input type="password" class="form-control" id="editPassword" />
+                    <span class="input-group-text" onclick="togglePassword('editPassword', 'eyeIcon1')"
+                      style="cursor: pointer;">
+                      <i id="eyeIcon1" class="ri-eye-line"></i>
+                    </span>
+                  </div>
                 </div>
                 <div class="col-md-6">
-                  <label for="editPassword" class="form-label">Confirmar Password</label>
-                  <input type="password" class="form-control" id="editPasswordCofirmacions" />
+                  <label for="editPasswordConfirm" class="form-label">Confirmar Password</label>
+                  <div class="input-group">
+                    <input type="password" class="form-control" id="editPasswordConfirm" />
+                    <span class="input-group-text" onclick="togglePassword('editPasswordConfirm', 'eyeIcon2')"
+                      style="cursor: pointer;">
+                      <i id="eyeIcon2" class="ri-eye-line"></i>
+                    </span>
+                  </div>
                 </div>
                 <div class="col-md-6">
                   <label for="editContacto" class="form-label">Contacto</label>
                   <input type="text" class="form-control" id="editContacto" />
                 </div>
               </div>
-
               <h6 class="mt-4 mb-3">Informações Curriculares</h6>
               <div class="mb-3">
                 <label for="editCurriculo" class="form-label">Currículo</label>
-                <input type="file" class="form-control" id="editCurriculo" name="curriculo" accept=".pdf"
-                  required></input>
+                <input type="file" class="form-control" id="editCurriculo" name="curriculo" accept=".pdf" required>
               </div>
-
-
             </form>
           </div>
           <div class="modal-footer">

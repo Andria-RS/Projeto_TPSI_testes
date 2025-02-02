@@ -15,7 +15,7 @@ router.put("/edit_user", userController.edit_user);
 router.post("/add_course", userController.add_course);
 router.get("/getAllUsersbyCordenador", userController.getAllUsersbyCordenador);
 router.post("/add_tese", userController.add_tese);
-router.put("/submit-document", teseController.update_tese);
+//router.put("/submit-document", teseController.update_tese);
 
 //router.post("/submit-evaluation", teseController.createEvaluation);
 router.get("/getUserPerfil/:userId", userController.getUserPerfil);
@@ -23,4 +23,4 @@ router.get("/getUserPerfil/:userId", userController.getUserPerfil);
 router.get("/getInfoToCordenador", userController.getInfoToCordenador);
 router.get("/getInfoToOrientador", userController.getInfoToOrientador);
 
-module.exports = router;
+module.exports = router

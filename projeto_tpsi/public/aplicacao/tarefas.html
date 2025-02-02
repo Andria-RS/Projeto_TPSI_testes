@@ -201,12 +201,13 @@
             </div>
             <div class="mb-3">
               <label for="thesisFile" class="form-label">Selecione o Arquivo</label>
-              <input type="file" class="form-control" id="thesisFile" name="thesisFile" accept=".zip" required>
+              <input type="file" class="form-control" id="thesisFile" name="thesisFile" accept=".pdf" required>
             </div>
 
             <div class="modal-footer">
-              <button type="submit" class="btn btn-dark">Enviar</button>
-            </div>
+              <button type="button" class="btn btn-dark" onclick="submissaoTese()">Enviar</button>
+          </div>
+          
           </form>
         </div>
       </div>
@@ -262,6 +263,7 @@
     </div>
   </div>
 
+  <!-- Submeter ata -->
   <div class="modal fade" id="ataModal" tabindex="-1" aria-labelledby="ataModalLabel" aria-hidden="true">
     <div class="modal-dialog">
       <div class="modal-content">
@@ -309,6 +311,7 @@
     </div>
   </div>
 
+    <!-- Criar Juri -->
   <div id="criarJuriModal" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
             aria-hidden="true">
             <div class=" modal-dialog modal-lg">

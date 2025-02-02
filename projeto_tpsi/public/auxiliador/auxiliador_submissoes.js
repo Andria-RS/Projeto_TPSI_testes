@@ -1,73 +1,137 @@
 
 
-document.addEventListener("DOMContentLoaded", function () {
-    document.getElementById("submitThesisForm").addEventListener("submit", submitThesis);
-});
+// async function submissaoTese() {
+//     console.log("ENTREI NA FUNÇÃO submissaoTese");
 
-async function submitThesis(event) {
-    console.log("ENTREI NA FUNÇÃO DE ENVIO DE TESE");
-    event.preventDefault();
+//     const thesisFileInput = document.getElementById("thesisFile");
+//     if (!thesisFileInput || thesisFileInput.files.length === 0) {
+//         alert("Por favor, selecione um arquivo PDF.");
+//         return;
+//     }
 
-    // Obtém o ID do usuário do sessionStorage
-    const userId = sessionStorage.getItem("userId");
-    if (!userId) {
-        alert("Usuário não autenticado. Faça login novamente.");
-        return;
-    }
+//     const formData = new FormData();
+//     formData.append("tese", thesisFileInput.files[0]); // Nome do campo deve corresponder ao usado no backend
 
-    // Obtém os campos do formulário
-    const formElement = document.getElementById("submitThesisForm");
-    const formData = new FormData(formElement);
+//     // Adicionando o userId ao FormData, já que você agora usa o userId no backend
+//     const userId = sessionStorage.getItem("userId");
+//     formData.append("userId", userId);
 
-    // Cria o objeto JSON com os dados do formulário
-    const data = {
-        userId: userId,
-        status: formData.get("status"), // Nome do campo no HTML: "status"
-        title: formData.get("thesisTitle"), // Nome do campo no HTML: "thesisTitle"
-    };
+//     console.log("Enviando tese:", formData.get("tese"));
 
-    // Certifica-se de que o arquivo da tese foi selecionado
+//     // Faz a requisição para enviar a tese ao backend
+//     fetch("/api/upload_tese", {
+//         method: "PUT",
+//         body: formData,  // Aqui, você envia o formData contendo o arquivo e o userId
+//     })
+//     .then(response => response.json())
+//     .then(data => {
+//         if (data.message) {
+//             alert("Tese enviada com sucesso!");
+//             location.reload();
+//         } else {
+//             alert("Erro ao enviar tese: " + data.error);
+//         }
+//     })
+//     .catch(error => {
+//         console.error("Erro ao enviar tese:", error);
+//         alert("Erro ao enviar tese: " + error.message);
+//     });
+// }
+
+
+
+// // async function submissaoTese() {
+// //     console.log("ENTREI NA FUNÇÃO submissaoTese");
+
+// //     const thesisFileInput = document.getElementById("thesisFile");
+// //     if (!thesisFileInput || thesisFileInput.files.length === 0) {
+// //         alert("Por favor, selecione um arquivo PDF.");
+// //         return;
+// //     }
+
+// //     // Obtém o userId do sessionStorage
+// //     const userId = sessionStorage.getItem("userId");
+// //     if (!userId) {
+// //         alert("Usuário não autenticado.");
+// //         return;
+// //     }
+
+// //     const thesisFile = thesisFileInput.files[0];
+
+// //     // Lê o arquivo como base64
+// //     const reader = new FileReader();
+// //     reader.onloadend = () => {
+// //         const fileBase64 = reader.result.split(',')[1];  // Remove o prefixo data URL
+
+// //         const data = {
+// //             userId: userId,
+// //             thesisFile: fileBase64, // Envia o arquivo como base64
+// //             fileName: thesisFile.name
+// //         };
+
+// //         console.log("Enviando tese:", data);
+
+// //         // Faz a requisição para enviar a tese ao backend
+// //         fetch("/api/upload_tese", {
+// //             method: "POST",
+// //             headers: {
+// //                 "Content-Type": "application/json",
+// //             },
+// //             body: JSON.stringify(data),
+// //         })
+// //         .then(response => response.json())
+// //         .then(data => {
+// //             if (data.message) {
+// //                 alert("Tese enviada com sucesso!");
+// //                 location.reload();
+// //             } else {
+// //                 alert("Erro ao enviar tese: " + data.error);
+// //             }
+// //         })
+// //         .catch(error => {
+// //             console.error("Erro ao enviar tese:", error);
+// //             alert("Erro ao enviar tese: " + error.message);
+// //         });
+// //     };
+
+// //     reader.readAsDataURL(thesisFile); // Converte o arquivo para base64
+// // }~
+
+async function submissaoTese() {
+    console.log("ENTREI NA FUNÇÃO submissaoTese");
+
     const thesisFileInput = document.getElementById("thesisFile");
-    if (thesisFileInput?.files?.length > 0) {
-        const file = thesisFileInput.files[0];
-        const base64File = await fileToBase64(file); // Converte o arquivo para Base64
-        data.thesisFile = base64File; // Adiciona o arquivo ao JSON
-        data.fileName = file.name; // Inclui o nome do arquivo
-    } else {
-        alert("Por favor, selecione o arquivo da tese antes de enviar.");
+    if (!thesisFileInput || thesisFileInput.files.length === 0) {
+        alert("Por favor, selecione um arquivo PDF.");
         return;
     }
 
-    console.log("Dados a serem enviados:", JSON.stringify(data));
+    const formData = new FormData();
+    formData.append("tese", thesisFileInput.files[0]); // Nome do campo para o arquivo
 
-    try {
-        const response = await fetch("/api/submit-document", {
-            method: "PUT",
-            headers: {
-                "Content-Type": "application/json",
-            },
-            body: JSON.stringify(data),
-        });
+    // Adicionando o userId ao FormData
+    const userId = sessionStorage.getItem("userId");
+    formData.append("userId", userId);  // Isso garante que o userId seja enviado
 
-        const responseData = await response.json();
+    console.log("Enviando tese:", formData.get("tese"));
 
-        if (response.ok) {
-            alert(responseData.message || "Documento enviado com sucesso!");
+    // Faz a requisição para enviar a tese ao backend
+    fetch("/api/upload_tese", {
+        method: "PUT",  // Usando POST, pois estamos enviando arquivos
+        body: formData,  // Envia FormData com o arquivo e userId
+    })
+    .then(response => response.json())
+    .then(data => {
+        if (data.message) {
+            alert("Tese enviada com sucesso!");
+            location.reload();
         } else {
-            alert(responseData.message || "Erro ao enviar documento.");
+            alert("Erro ao enviar tese: " + data.error);
         }
-    } catch (error) {
+    })
+    .catch(error => {
         console.error("Erro ao enviar tese:", error);
         alert("Erro ao enviar tese: " + error.message);
-    }
-}
-
-// Função para converter o arquivo para Base64
-async function fileToBase64(file) {
-    return new Promise((resolve, reject) => {
-        const reader = new FileReader();
-        reader.onload = () => resolve(reader.result.split(",")[1]); // Remove o prefixo `data:...base64,`
-        reader.onerror = reject;
-        reader.readAsDataURL(file);
     });
 }
+

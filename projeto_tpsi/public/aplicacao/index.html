@@ -5,10 +5,12 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
-  <link rel="stylesheet" href="\aplicacao\sytles\styles.css">
+  
   <link href="https://cdn.jsdelivr.net/npm/remixicon@2.5.0/fonts/remixicon.css" rel="stylesheet">
   <script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
   <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" rel="stylesheet" />
+  <script src="../permissoes.js"></script>
+
   <title>Página Inicial</title>
   <script>
     document.addEventListener("DOMContentLoaded", function () {
@@ -68,7 +70,23 @@
         <div class="list-group">
 
           <!-- Card para Documentos -->
-          <div class="card mb-3">
+          <div class="card mb-3 cordenador">
+            <div class="card-header">
+              <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-search"
+                viewBox="0 0 16 16">
+                <path
+                  d="M11.742 10.344a6.5 6.5 0 1 0-1.397 1.398h-.001q.044.06.098.115l3.85 3.85a1 1 0 0 0 1.415-1.414l-3.85-3.85a1 1 0 0 0-.115-.1zM12 6.5a5.5 5.5 0 1 1-11 0 5.5 5.5 0 0 1 11 0" />
+              </svg>
+              - Visualizar\Pesquisar
+            </div>
+            <div class="card-body">
+              <a href="../aplicacao/search.html" class="btn" style="background-color: transparent; border: none;">
+                Clique para Visualizar\Pesquisar.</a>
+            </div>
+          </div>
+
+          <!-- Card para Documentos -->
+          <div class="card mb-3 orientador">
             <div class="card-header">
               <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-search"
                 viewBox="0 0 16 16">
@@ -84,7 +102,7 @@
           </div>
 
           <!-- Card para Add Student -->
-          <div class="card mb-3" onclick="openModal('modal_add_Sutdent')">
+          <div class="card mb-3  sa" onclick="openModal('modal_add_Sutdent')">
             <div class="card-header">
               <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
                 class="bi bi-person-plus" viewBox="0 0 16 16">
@@ -102,7 +120,7 @@
           </div>
 
           <!-- Card para Add Course -->
-          <div class="card mb-3" onclick="openModal('modal_add_course')">
+          <div class="card mb-3 gac" onclick="openModal('modal_add_course')">
             <div class="card-header">
               <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
                 class="bi bi-plus-circle" viewBox="0 0 16 16">
@@ -119,7 +137,7 @@
           </div>
 
           <!-- Card para Add Cordenador -->
-          <div class="card mb-3" onclick="openModal('modal_add_Cordenador')">
+          <div class="card mb-3 gac" onclick="openModal('modal_add_Cordenador')">
             <div class="card-header">
               <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
                 class="bi bi-person-plus" viewBox="0 0 16 16">
@@ -137,7 +155,7 @@
           </div>
 
           <!-- Card para Add Orientador -->
-          <div class="card mb-3" onclick="openModal('modal_add_Oriendador')">
+          <div class="card mb-3 cordenador" onclick="openModal('modal_add_Oriendador')">
             <div class="card-header">
               <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
                 class="bi bi-person-plus" viewBox="0 0 16 16">
@@ -155,7 +173,7 @@
           </div>
 
           <!-- Card para Add Tese -->
-          <div class="card mb-3" onclick="openModal('modal_add_tese')">
+          <div class="card mb-3 cordenador" onclick="openModal('modal_add_tese')">
             <div class="card-header">
               <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
                 class="bi bi-file-earmark-plus" viewBox="0 0 16 16">
@@ -566,7 +584,6 @@
   <script src="../auxiliador\auxiliador.js"></script>
   <script src="../auxiliador\auxiliador_email.js"></script>
   <script src="../auxiliador\loadNavbar.js"></script>
-
 </body>
 <footer class="bg-light text-center py-3 fixed-bottom">
   <div class="container">

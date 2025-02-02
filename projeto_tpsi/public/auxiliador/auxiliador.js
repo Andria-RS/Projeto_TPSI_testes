@@ -167,38 +167,69 @@ document.addEventListener('DOMContentLoaded', function() {
     });
   });
 });
+function login(event) {
+  event.preventDefault();
+  
+  const email = document.getElementById("email").value;
+  const password = document.getElementById("password").value;
+
+  fetch("/api/login", {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json"
+    },
+    body: JSON.stringify({ email, password })
+  })
+  .then(response => response.json())
+  .then(data => {
+    if (data.userId) {
+      // Armazenando os dados do usuário no sessionStorage
+      sessionStorage.setItem('userId', data.userId);  // Armazenando o userId
+      sessionStorage.setItem('tipoUtilizador', data.tipoUtilizador);  // Armazenando o tipo de utilizador
+      console.log(`Usuário logado com ID: ${data.userId} e tipo: ${data.tipoUtilizador}`);
+      
+      // Redireciona para a página principal
+      window.location.href = "/aplicacao/index.html";  // Redireciona para index.html
+    } else {
+      alert(data.message);  // Exibe mensagem de erro, caso não consiga fazer login
+    }
+  })
+  .catch(error => {
+    alert("Erro ao realizar login: " + error.message);
+  });
+}
 
   
-  function login(event) {
-    event.preventDefault();
+  // function login(event) {
+  //   event.preventDefault();
     
-    const email = document.getElementById("email").value;
-    const password = document.getElementById("password").value;
+  //   const email = document.getElementById("email").value;
+  //   const password = document.getElementById("password").value;
   
-    fetch("/api/login", {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json"
-      },
-      body: JSON.stringify({ email, password })
-    })
-    .then(response => response.json())
-    .then(data => {
-      if (data.userId) {
-        // Corrigido de 'essionStorage' para 'sessionStorage'
-        sessionStorage.setItem('userId', data.userId);  // Armazenando no sessionStorage
-        console.log(`Usuário logado com ID: ${data.userId}`);
+  //   fetch("/api/login", {
+  //     method: "POST",
+  //     headers: {
+  //       "Content-Type": "application/json"
+  //     },
+  //     body: JSON.stringify({ email, password })
+  //   })
+  //   .then(response => response.json())
+  //   .then(data => {
+  //     if (data.userId) {
+  //       // Corrigido de 'essionStorage' para 'sessionStorage'
+  //       sessionStorage.setItem('userId', data.userId);  // Armazenando no sessionStorage
+  //       console.log(`Usuário logado com ID: ${data.userId}`);
         
-        // Redireciona para a página principal
-        window.location.href = "/aplicacao/index.html";  // Redireciona para index.html
-      } else {
-        alert(data.message);  // Exibe mensagem de erro, caso não consiga fazer login
-      }
-    })
-    .catch(error => {
-      alert("Erro ao realizar login: " + error.message);
-    });
-  }
+  //       // Redireciona para a página principal
+  //       window.location.href = "/aplicacao/index.html";  // Redireciona para index.html
+  //     } else {
+  //       alert(data.message);  // Exibe mensagem de erro, caso não consiga fazer login
+  //     }
+  //   })
+  //   .catch(error => {
+  //     alert("Erro ao realizar login: " + error.message);
+  //   });
+  // }
   
 
   // REGISTER FUNCTION

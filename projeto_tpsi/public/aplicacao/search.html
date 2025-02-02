@@ -30,11 +30,10 @@
                     <input type="text" id="estado_tese" class="form-control filtro" placeholder="Filtrar por Estado da Tese" oninput="aplicarFiltro()">
                 </div>
             </div>
-            
-            <!-- Botão para download do PDF -->
-            <button class="btn btn-success mb-3" onclick="gerarPDF()">Baixar PDF</button>
-            
-            <!-- Tabela para exibir os dados -->
+          <!-- Seção para Coordenador -->
+          <div class="container mt-4" id="coordenador_section">
+            <h3>Dados para Coordenador</h3>
+            <button class="btn btn-success mb-3" onclick="gerarPDFCordenador()">Baixar PDF</button>
             <table class="table table-striped">
                 <thead>
                     <tr>
@@ -47,7 +46,28 @@
                     </tr>
                 </thead>
                 <tbody id="tabela_Search">
-                    <!-- As linhas serão preenchidas dinamicamente pela função popularTabela -->
+                    <!-- As linhas serão preenchidas dinamicamente -->
+                </tbody>
+            </table>
+        </div>
+
+        <!-- Seção para Orientador -->
+        <div class="container mt-4" id="orientador_section">
+            <h3>Dados para Orientador</h3>
+            <button class="btn btn-success mb-3" onclick="gerarPDFOrientador()">Baixar PDF</button>
+            <table class="table table-striped">
+                <thead>
+                    <tr>
+                        <th>ID</th>
+                        <th>Nome</th>
+                        <th>Tema</th>
+                        <th>Curso</th>
+                        <th>Estado da Tese</th>
+                        <th>Data da Defesa</th>
+                    </tr>
+                </thead>
+                <tbody id="tabela_Search_orientador">
+                    <!-- As linhas serão preenchidas dinamicamente -->
                 </tbody>
             </table>
         </div>

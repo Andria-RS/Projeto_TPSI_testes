@@ -36,7 +36,7 @@
       <h3>Gestão de Utilizadores</h3>
       <div>
         <button class="btn btn-dark me-2" data-bs-toggle="modal" data-bs-target="#registerModal">
-          <i class="fas fa-plus"></i> Adicionar novo
+          <i class="fas fa-plus"></i> Adicionar novo Utilizador
         </button>
       </div>
     </div>
@@ -57,29 +57,31 @@
       </tbody>
     </table>
 
-    <div id="editModal" class="modal fade" tabindex="-1">
+    <div class="modal fade" id="editModal" tabindex="-1" aria-labelledby="editModalLabel" aria-hidden="true">
       <div class="modal-dialog">
         <div class="modal-content">
           <div class="modal-header">
-            <h5 class="modal-title">Editar Usuário</h5>
+            <h5 class="modal-title">Editar Utilizador</h5>
             <button type="button" class="btn-close" data-dismiss="modal" aria-label="Fechar"></button>
           </div>
-          <div class="modal-body">
-            <form>
+
+          <form>
+            <div class="modal-body">
               <h6>Informações Pessoais</h6>
               <div class="row g-3 align-items-center">
                 <div class="col-md-6">
-                  <label for="editNome" class="form-label">Nome</label>
+                  <label for="editNome" class="form-label">Nome:</label>
                   <input type="text" class="form-control" id="editNome" />
                 </div>
                 <div class="col-md-6">
-                  <label for="editEmail" class="form-label">Email</label>
+                  <label for="editEmail" class="form-label">E-mail:</label>
                   <input type="email" class="form-control" id="editEmail" />
                 </div>
                 <div class="col-md-6">
-                  <label for="editPassword" class="form-label">Password</label>
+                  <label for="editPassword" class="form-label">Palavra-passe:</label>
                   <div class="input-group">
-                    <input type="password" class="form-control" id="editPassword" />
+                    <input type="password" class="form-control" id="editPassword"
+                      placeholder="Introduza a nova palavra-passe" />
                     <span class="input-group-text" onclick="togglePassword('editPassword', 'eyeIcon1')"
                       style="cursor: pointer;">
                       <i id="eyeIcon1" class="ri-eye-line"></i>
@@ -87,9 +89,10 @@
                   </div>
                 </div>
                 <div class="col-md-6">
-                  <label for="editPasswordConfirm" class="form-label">Confirmar Password</label>
+                  <label for="editPasswordConfirm" class="form-label">Confirmar Palavra-passe:</label>
                   <div class="input-group">
-                    <input type="password" class="form-control" id="editPasswordConfirm" />
+                    <input type="password" class="form-control" id="editPasswordConfirm"
+                      placeholder="Confirme a nova palavra-passe introduzida" />
                     <span class="input-group-text" onclick="togglePassword('editPasswordConfirm', 'eyeIcon2')"
                       style="cursor: pointer;">
                       <i id="eyeIcon2" class="ri-eye-line"></i>
@@ -97,7 +100,7 @@
                   </div>
                 </div>
                 <div class="col-md-6">
-                  <label for="editContacto" class="form-label">Contacto</label>
+                  <label for="editContacto" class="form-label">Contacto:</label>
                   <input type="text" class="form-control" id="editContacto" />
                 </div>
               </div>
@@ -106,8 +109,9 @@
                 <label for="editCurriculo" class="form-label">Currículo</label>
                 <input type="file" class="form-control" id="editCurriculo" name="curriculo" accept=".pdf" required>
               </div>
-            </form>
-          </div>
+            </div>
+          </form>
+
           <div class="modal-footer">
             <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancelar</button>
             <button type="button" class="btn btn-dark" onclick="salvarEdicaoUsuario()">Salvar Alterações</button>
@@ -146,11 +150,9 @@
             <h5 class="modal-title" id="registerModalLabel">Adicionar um utilizador</h5>
             <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Fechar"></button>
           </div>
-          <!-- Formulário -->
+
           <form id="form_Admin" onsubmit="add_user(event)">
             <div class="modal-body">
-
-              <!-- Tipo de Utilizador -->
               <div class="mb-4">
                 <label for="id_tipo_utilizador_Admin" class="form-label">Tipo de Utilizador:</label>
                 <select class="class_tipo_utilizador form-select" id="id_tipo_utilizador_Admin"
@@ -159,16 +161,12 @@
                 </select>
               </div>
 
-              <!-- Informações Pessoais -->
               <h6 class="mb-3">Informações pessoais</h6>
               <div class="row g-3 align-items-center">
-                <!-- Foto de perfil -->
                 <div class="col-md-12">
                   <label for="foto_Admin" class="form-label">Foto de perfil:</label>
                   <input type="file" class="form-control" id="foto_Admin" name="foto" accept="image/*">
                 </div>
-
-                <!-- Dados Pessoais -->
                 <div class="col-md-12">
                   <div class="row g-3">
                     <div class="col-md-6">
@@ -201,7 +199,6 @@
                 </div>
               </div>
 
-              <!-- Informações Curriculares -->
               <h6 class="mt-4 mb-3">Informações Curriculares</h6>
               <div class="row g-3">
                 <div class="col-md-4">
@@ -227,7 +224,7 @@
                 <input type="file" class="form-control" id="curriculo_Admin" name="curriculo" accept=".pdf,.doc,.docx">
               </div>
             </div>
-            <!-- Rodapé do Modal -->
+
             <div class="modal-footer">
               <button type="submit" class="btn btn-dark">Adicionar</button>
             </div>

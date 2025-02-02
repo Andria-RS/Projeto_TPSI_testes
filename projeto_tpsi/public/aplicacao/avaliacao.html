@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="pt">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Perfil de Utilizador</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
+</head>
+
+<body class="bg-light">
+
+    <div id="navbar"></div>
+
+    <div class="row">
+        <div class="col-md-12">
+            <div class="container d-flex justify-content-center align-items-center min-vh-100">
+                <div class="card shadow-lg border-0 p-4 rounded-4 w-75">
+                    <div class="container">
+                        <h1 class="text-center mb-4">Avaliação de Tese de Mestrado</h1>
+
+                        <div class="card">
+                            <div class="card-header">
+                                <h2>Documentos da Tese do Aluno</h2>
+                            </div>
+                            <div class="card-body">
+                                <ul class="list-group">
+                                    <li class="list-group-item">
+                                        <a href="" download="tese_documento_1.pdf">
+                                            <i class="fas fa-file-archive"></i> Tese [Aluno]
+                                        </a>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+
+                        <div class="card mt-5">
+                            <div class="card-header">
+                                <h2>Download do Documento de Avaliação</h2>
+                            </div>
+                            <div class="card-body">
+                                <a href="https://placehold.co/600x400" download="documento_avaliacao.pdf"
+                                    class="btn btn-primary">
+                                    <i class="fas fa-download"></i> Baixar Documento de Avaliação
+                                </a>
+                            </div>
+                        </div>
+
+                        <div class="card mt-5">
+                            <div class="card-header">
+                                <h2>Upload do Documento de Avaliação</h2>
+                            </div>
+                            <div class="card-body">
+                                <form>
+                                    <div class="mb-3">
+                                        <label for="uploadAvaliacao" class="form-label">Escolha o arquivo PDF</label>
+                                        <input class="form-control" type="file" id="uploadAvaliacao"
+                                            accept="application/pdf">
+                                    </div>
+                                    <button type="submit" class="btn btn-success">
+                                        <i class="fas fa-upload"></i> Enviar Documento de Avaliação
+                                    </button>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+
+    <footer class="bg-light text-center py-3 fixed-bottom">
+        <div class="container">
+            <p class="mb-1">&copy; Instituto Politécnico de Viana do Castelo • Gestor de Teses • 2024</p>
+        </div>
+    </footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap-icons/font/bootstrap-icons.js"></script>
+    <script src="../auxiliador\loadNavbar.js"></script>
+
+</body>
+
+</html>

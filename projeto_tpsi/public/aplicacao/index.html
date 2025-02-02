@@ -8,6 +8,7 @@
   <link rel="stylesheet" href="\aplicacao\sytles\styles.css">
   <link href="https://cdn.jsdelivr.net/npm/remixicon@2.5.0/fonts/remixicon.css" rel="stylesheet">
   <script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" rel="stylesheet" />
   <title>Página Inicial</title>
   <script>
     document.addEventListener("DOMContentLoaded", function () {
@@ -185,35 +186,35 @@
             </div>
             <form id="form_Aluno" onsubmit="add_user(event)">
               <div class="modal-body">
-                <h6 class="mb-3">Informações pessoais</h6>
+                <h6 class="mb-3">Informações Pessoais</h6>
                 <div class="row g-3 align-items-center">
                   <div class="col-md-12">
-                    <label for="foto_Aluno" class="form-label">Foto de perfil:</label>
+                    <label for="foto_Aluno" class="form-label">Foto de Perfil:</label>
                     <input type="file" class="form-control" id="foto_Aluno" name="foto" accept="image/*">
                   </div>
                   <div class="col-md-12">
                     <div class="row g-3">
                       <div class="col-md-6">
                         <label for="nome_Aluno" class="form-label">Nome:</label>
-                        <input type="text" class="form-control" id="nome_Aluno" name="nome" placeholder="Digite o nome"
-                          required>
+                        <input type="text" class="form-control" id="nome_Aluno" name="nome"
+                          placeholder="Introduza o nome completo" required>
                       </div>
                       <div class="col-md-6">
                         <label for="contacto_Aluno" class="form-label">Contacto:</label>
                         <input type="text" class="form-control" id="contacto_Aluno" name="contacto"
-                          placeholder="Digite o contacto" required>
+                          placeholder="Introduza o contacto" required>
                       </div>
                       <div class="col-md-6">
-                        <label for="email_Aluno" class="form-label">Email:</label>
+                        <label for="email_Aluno" class="form-label">E-mail:</label>
                         <input type="email" class="form-control" id="email_Aluno" name="email"
-                          placeholder="Digite o email" required>
+                          placeholder="Introduza o e-mail" required>
                       </div>
                       <div class="col-md-6">
-                        <label for="password_Aluno" class="form-label">Senha:</label>
+                        <label for="password_Aluno" class="form-label">Palavra-passe:</label>
                         <div class="input-group">
                           <input type="password" class="form-control" id="password_Aluno" name="password"
-                            placeholder="Digite a senha" required>
-                            <button class="btn btn-outline-secondary" type="button"
+                            placeholder="Introduza a palavra-passe" required>
+                          <button class="btn btn-outline-secondary" type="button"
                             onclick="togglePassword('password_Aluno', 'eye_icon')">
                             <i id="eye_icon" class="ri-eye-line"></i>
                           </button>
@@ -225,7 +226,7 @@
                 <h6 class="mt-4 mb-3">Informações Curriculares</h6>
                 <div class="row g-3">
                   <div class="col-md-6">
-                    <label for="id_curso_Aluno">Mestrado:</label>
+                    <label for="id_curso_Aluno">Curso de Mestrado:</label>
                     <select class="class_curso form-select" id="id_curso_Aluno" name="id_curso" required>
                       <option value="">Selecione o Curso</option>
                     </select>
@@ -263,7 +264,7 @@
                 <h6 class="mb-3">Informações pessoais</h6>
                 <div class="row g-3 align-items-center">
                   <div class="form-group">
-                    <label for="foto_Coordenador">Foto:</label>
+                    <label for="foto_Coordenador">Foto de Perfil:</label>
                     <input type="file" class="form-control" id="foto_Coordenador" name="foto" accept="image/*">
                   </div>
 
@@ -272,27 +273,27 @@
                       <div class="col-md-6">
                         <label for="nome_Coordenador" class="form-label">Nome:</label>
                         <input type="text" class="form-control" id="nome_Coordenador" name="nome"
-                          placeholder="Digite o nome" required>
+                          placeholder="Introduza o nome completo" required>
                       </div>
 
                       <div class="col-md-6">
                         <label for="contacto_Coordenador" class="form-label">Contacto:</label>
                         <input type="text" class="form-control" id="contacto_Coordenador" name="contacto"
-                          placeholder="Digite o contacto" required>
+                          placeholder="Introduza o contacto" required>
                       </div>
 
                       <div class="col-md-6">
-                        <label for="email_Coordenador" class="form-label">Email:</label>
+                        <label for="email_Coordenador" class="form-label">E-mail:</label>
                         <input type="email" class="form-control" id="email_Coordenador" name="email"
-                          placeholder="Digite o email" required>
+                          placeholder="Introduza o e-mail" required>
                       </div>
 
                       <div class="col-md-6">
-                        <label for="password_Coordenador" class="form-label">Senha:</label>
+                        <label for="password_Coordenador" class="form-label">Palavra-passe:</label>
                         <div class="input-group">
                           <input type="password" class="form-control" id="password_Coordenador" name="password"
-                            placeholder="Digite a senha" required>
-                            <button class="btn btn-outline-secondary" type="button"
+                            placeholder="Introduza a palavra-passe" required>
+                          <button class="btn btn-outline-secondary" type="button"
                             onclick="togglePassword('password_Coordenador', 'eye_icon')">
                             <i id="eye_icon" class="ri-eye-line"></i>
                           </button>
@@ -307,7 +308,7 @@
                   <div class="col-md-6">
                     <label for="esp_Coordenador">Especialidade:</label>
                     <input type="text" class="form-control" id="esp_Coordenador" name="especialidade"
-                      placeholder="Digite a Especialidade" required>
+                      placeholder="Introduza a Especialidade" required>
                   </div>
 
                   <div class="col-md-6">
@@ -324,7 +325,7 @@
                   </div>
                 </div>
                 <div class="modal-footer">
-                  <button type="submit" class="btn btn-primary">Cadastrar</button>
+                  <button type="submit" class="btn btn-primary">Adicionar</button>
                 </div>
             </form>
           </div>
@@ -347,9 +348,9 @@
               <div class="col-md-12">
                 <div class="row g-3">
                   <div class="col-md-12">
-                    <label for="nome_mestrado" class="form-label">Nome de Mestrado:</label>
+                    <label for="nome_mestrado" class="form-label">Nome do Curso de Mestrado:</label>
                     <input type="text" class="form-control" id="nome_mestrado" name="nome_mestrado"
-                      placeholder="Digite o nome" required>
+                      placeholder="Introduza o nome do curso de mestrado" required>
                   </div>
 
                   <div class="col-md-12">
@@ -392,32 +393,38 @@
 
               <div class="row g-3 align-items-center">
                 <div class="form-group">
-                  <label for="foto_Oriendador">Foto:</label>
+                  <label for="foto_Oriendador">Foto de Perfil:</label>
                   <input type="file" class="form-control" id="foto_Oriendador" name="foto" accept="image/*">
                 </div>
 
                 <div class="col-md-6">
                   <label for="nome_Oriendador">Nome:</label>
-                  <input type="text" class="form-control" id="nome_Oriendador" name="nome" placeholder="Digite o nome"
-                    required>
+                  <input type="text" class="form-control" id="nome_Oriendador" name="nome"
+                    placeholder="Introduza o nome completo" required>
                 </div>
 
                 <div class="col-md-6">
                   <label for="contacto_Oriendador">Contacto:</label>
                   <input type="text" class="form-control" id="contacto_Oriendador" name="contacto"
-                    placeholder="Digite o contacto" required>
+                    placeholder="Introduza o contacto" required>
                 </div>
 
                 <div class="col-md-6">
-                  <label for="email_Oriendador">Email:</label>
+                  <label for="email_Oriendador">E-mail:</label>
                   <input type="email" class="form-control" id="email_Oriendador" name="email"
-                    placeholder="Digite o email" required>
+                    placeholder="Introduza o e-mail" required>
                 </div>
 
                 <div class="col-md-6">
-                  <label for="password_Oriendador">Senha:</label>
-                  <input type="password" class="form-control" id="password_Oriendador" name="password"
-                    placeholder="Digite a senha" required>
+                  <label for="password_Oriendador">Palavra-passe:</label>
+                  <div class="input-group">
+                    <input type="password" class="form-control" id="password_Oriendador" name="password"
+                      placeholder="Introduza a palavra-passe" required>
+                    <button class="btn btn-outline-secondary" type="button"
+                      onclick="togglePassword('password_Oriendador', 'eye_icon')">
+                      <i id="eye_icon" class="ri-eye-line"></i>
+                    </button>
+                  </div>
                 </div>
               </div>
 
@@ -426,7 +433,7 @@
                 <div class="col-md-6">
                   <label for="esp_Oriendador">Especialidade:</label>
                   <input type="text" class="form-control" id="esp_Oriendador" name="especialidade"
-                    placeholder="Digite a Especialidade" required>
+                    placeholder="Introduza a Especialidade" required>
                 </div>
 
                 <div class="col-md-6">
@@ -444,7 +451,7 @@
               </div>
 
               <div class="modal-footer">
-                <button type="submit" class="btn btn-dark">Cadastrar</button>
+                <button type="submit" class="btn btn-dark">Adicionar</button>
               </div>
             </div>
           </form>
@@ -492,13 +499,13 @@
               <div class="row g-3">
                 <div class="col-md-6">
                   <label for="tema">Tema:</label>
-                  <input type="text" class="form-control" id="tema" name="tema" placeholder="Digite o tema da tese"
+                  <input type="text" class="form-control" id="tema" name="tema" placeholder="Introduza o tema da tese"
                     required>
                 </div>
                 <div class="col-md-6">
                   <label for="descricao">Descrição:</label>
                   <textarea class="form-control" id="descricao" name="descricao"
-                    placeholder="Digite a descrição da tese"></textarea>
+                    placeholder="Introduza a descrição da tese"></textarea>
                 </div>
                 <div class="col-md-6">
                   <label for="status">Status:</label>
@@ -528,6 +535,21 @@
     <div class="col-sm-8 content py-5 p-5 mt-5">
       <h2 class="text-center">Bem-vindo!</h2>
       <p class="text-center">Você iniciou sessão no Sistema.</p>
+
+      <div class="card shadow-sm p-3 rounded-3" style="max-width: 500px;">
+        <div class="d-flex justify-content-between align-items-center">
+          <h6 class="text-danger"><i class="fas fa-hourglass-half"></i> Aprovação pendente</h6>
+          <a href="#" class="text-primary">Ver mais></a>
+        </div>
+        <hr>
+        <div class="d-flex align-items-center">
+          <img src="https://randomuser.me/api/portraits/women/65.jpg" alt="Foto de Paula" class="rounded-circle me-3"
+            width="45" height="45">
+          <span class="fw-bold">Paula Martinez</span>
+          <span class="ms-auto badge text-bg-light px-3 py-2">Pending</span>
+        </div>
+      </div>
+
       <!-- Link para o painel admin visível para admins -->
       <div class="text-center mt-4" style="display: none;" id="adminLink">
         <a href="../admin/admin.html" class="btn btn-warning">Ir para o Admin</a>

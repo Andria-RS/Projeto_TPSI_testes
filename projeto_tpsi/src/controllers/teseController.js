@@ -1,61 +1,270 @@
-const multer = require('multer');
-const path = require('path');
+
+// // // const path = require("path");
+// // // const fs = require("fs");
+// // // const multer = require("multer");
+// // // const db = require("../database");
+
+// // // // Configuração do multer para armazenar os arquivos na pasta 'uploads/teses'
+// // // const storage = multer.diskStorage({
+// // //     destination: (req, file, cb) => {
+// // //         const uploadDir = "uploads/teses";
+// // //         if (!fs.existsSync(uploadDir)) {
+// // //             fs.mkdirSync(uploadDir, { recursive: true });
+// // //         }
+// // //         cb(null, uploadDir); // Caminho onde o arquivo será salvo
+// // //     },
+// // //     filename: (req, file, cb) => {
+// // //         console.log("id_1");
+        
+       
+// // //         const userId = req.body.userId;  // Pegue o 'userId' do FormData
+// // //         console.log(userId);
+// // //         const fileExtension = path.extname(file.originalname).toLowerCase();
+// // //         const fileName = `${userId}_tese${fileExtension}`;
+// // //         cb(null, fileName);  // Defina o nome do arquivo
+// // //     }
+// // // });
+
+// // // // Criação do middleware do multer
+// // // const upload = multer({ storage: storage }).single('tese');  // 'tese' é o nome do campo no FormData
+
+// // // // Rota de upload da tese
+// // // exports.upload_tese = (req, res) => {
+// // //     // Use o multer para lidar com o upload do arquivo
+// // //     upload(req, res, (err) => {
+// // //         if (err) {
+// // //             console.error("Erro ao fazer upload:", err);
+// // //             return res.status(500).json({ message: "Erro ao fazer upload: " + err.message });
+// // //         }
+
+// // //         const { userId } = req.body;
+// // //         const file = req.file;
+
+// // //         if (!userId || !file) {
+// // //             return res.status(400).json({ message: "userId e tese são obrigatórios." });
+// // //         }
+
+// // //         console.log("Arquivo recebido:", file);
+
+// // //         // Atualizar o caminho do PDF no banco de dados
+// // //         const filePath = file.path;  // Caminho do arquivo no servidor
+// // //         const updateQuery = "UPDATE tese SET doc_tese = ? WHERE id_aluno = ?";
+        
+
+// // //         console.log("id_2");
+        
+// // //         console.log(userId);
+// // //         db.query(updateQuery, [filePath, userId], (err, result) => {
+// // //             if (err) {
+// // //                 console.error("Erro ao atualizar a tese:", err);
+// // //                 return res.status(500).json({ message: "Erro ao atualizar a tese: " + err.message });
+// // //             }
+
+// // //             if (result.affectedRows === 0) {
+// // //                 return res.status(404).json({ message: "Tese não encontrada para o aluno especificado." });
+// // //             }
+
+// // //             res.status(200).json({ message: "Tese atualizada com sucesso!" });
+// // //         });
+// // //     });
+// // // };
+
+// // const path = require("path");
+// // const fs = require("fs");
+// // const multer = require("multer");
+// // const db = require("../database");
+// // const express = require("express");
+
+// // // Configuração do multer para armazenar os arquivos na pasta 'uploads/teses'
+// // const storage = multer.diskStorage({
+// //     destination: (req, file, cb) => {
+// //         const uploadDir = "uploads/teses";
+// //         if (!fs.existsSync(uploadDir)) {
+// //             fs.mkdirSync(uploadDir, { recursive: true });
+// //         }
+// //         cb(null, uploadDir); // Caminho onde o arquivo será salvo
+// //     },
+// //     filename: (req, file, cb) => {
+// //         // Verifique o userId aqui
+// //         console.log("id_1");
+        
+// //         const userId = req.body.userId;  // Pegue o 'userId' do FormData
+// //         console.log("userId na função filename:", userId); // Isso deve ser exibido agora
+// //         const fileExtension = path.extname(file.originalname).toLowerCase();
+// //         const fileName = `${userId}_tese${fileExtension}`;
+// //         cb(null, fileName);  // Defina o nome do arquivo
+// //     }
+// // });
+
+// // // Criação do middleware do multer
+// // const upload = multer({ storage: storage }).single('tese');  // 'tese' é o nome do campo no FormData
+
+// // // Rota de upload da tese
+// // exports.upload_tese = (req, res) => {
+// //     // Use o multer para lidar com o upload do arquivo
+// //     upload(req, res, (err) => {
+// //         if (err) {
+// //             console.error("Erro ao fazer upload:", err);
+// //             return res.status(500).json({ message: "Erro ao fazer upload: " + err.message });
+// //         }
+
+// //         const { userId } = req.body; // Agora deve ter o userId corretamente
+// //         const file = req.file;
+
+// //         console.log("userId dentro da rota:", userId); // Verifique se o userId chega aqui
+// //         if (!userId || !file) {
+// //             return res.status(400).json({ message: "userId e tese são obrigatórios." });
+// //         }
+
+// //         console.log("Arquivo recebido:", file);
+
+// //         // Atualizar o caminho do PDF no banco de dados
+// //         const filePath = file.path;  // Caminho do arquivo no servidor
+// //         const updateQuery = "UPDATE tese SET doc_tese = ? WHERE id_aluno = ?";
+
+// //         db.query(updateQuery, [filePath, userId], (err, result) => {
+// //             if (err) {
+// //                 console.error("Erro ao atualizar a tese:", err);
+// //                 return res.status(500).json({ message: "Erro ao atualizar a tese: " + err.message });
+// //             }
+
+// //             if (result.affectedRows === 0) {
+// //                 return res.status(404).json({ message: "Tese não encontrada para o aluno especificado." });
+// //             }
+
+// //             res.status(200).json({ message: "Tese atualizada com sucesso!" });
+// //         });
+// //     });
+// // };
+// const path = require("path");
+// const fs = require("fs");
+// const multer = require("multer");
+// const express = require("express");
+// const db = require("../database");
+
+// const app = express();
+
+// // Middleware para garantir que os dados sejam processados corretamente
+// app.use(express.json()); // Processa dados JSON (como userId)
+// app.use(express.urlencoded({ extended: true })); // Processa dados URL-encoded, caso use esse método no frontend
+
+// // Configuração do multer para armazenar os arquivos na pasta 'uploads/teses'
+// const storage = multer.diskStorage({
+//     destination: (req, file, cb) => {
+//         const uploadDir = "uploads/teses";
+//         if (!fs.existsSync(uploadDir)) {
+//             fs.mkdirSync(uploadDir, { recursive: true });
+//         }
+//         cb(null, uploadDir); // Caminho onde o arquivo será salvo
+//     },
+//     filename: (req, file, cb) => {
+//         // Verifique o userId aqui
+//         const userId = req.body.userId;  // Pegue o 'userId' do FormData
+//         console.log("userId dentro da função filename:", userId); // Isso deve ser exibido agora
+//         const fileExtension = path.extname(file.originalname).toLowerCase();
+//         const fileName = `${userId}_tese${fileExtension}`;
+//         cb(null, fileName);  // Defina o nome do arquivo
+//     }
+// });
+
+// // Criação do middleware do multer
+// const upload = multer({ storage: storage }).single('tese');  // 'tese' é o nome do campo no FormData
+
+// // Rota de upload da tese
+// exports.upload_tese = (req, res) => {
+//     // Primeiro, faça o processamento do multer
+//     upload(req, res, (err) => {
+//         if (err) {
+//             console.error("Erro ao fazer upload:", err);
+//             return res.status(500).json({ message: "Erro ao fazer upload: " + err.message });
+//         }
+
+//         const { userId } = req.body; // Agora deve ter o userId corretamente
+//         const file = req.file;
+
+//         if (!userId || !file) {
+//             return res.status(400).json({ message: "userId e tese são obrigatórios." });
+//         }
+
+//         console.log("Arquivo recebido:", file);
+//         console.log("userId recebido:", userId); // Verifique se o userId chega aqui
+
+//         // Atualizar o caminho do PDF no banco de dados
+//         const filePath = file.path;  // Caminho do arquivo no servidor
+//         const updateQuery = "UPDATE tese SET doc_tese = ? WHERE id_aluno = ?";
+
+//         db.query(updateQuery, [filePath, userId], (err, result) => {
+//             if (err) {
+//                 console.error("Erro ao atualizar a tese:", err);
+//                 return res.status(500).json({ message: "Erro ao atualizar a tese: " + err.message });
+//             }
+
+//             if (result.affectedRows === 0) {
+//                 return res.status(404).json({ message: "Tese não encontrada para o aluno especificado." });
+//             }
+
+//             res.status(200).json({ message: "Tese atualizada com sucesso!" });
+//         });
+//     });
+// };
+
+const path = require("path");
+const fs = require("fs");
+const multer = require("multer");
+const express = require("express");
 const db = require("../database");
 
+const app = express();
 
-exports.update_tese = async (req, res) => {
-    try {
-        const { userId, status, title, description, thesisFile, fileName } = req.body;
+// Middleware para garantir que os dados sejam processados corretamente
+app.use(express.json()); // Processa dados JSON (como userId)
+app.use(express.urlencoded({ extended: true })); // Processa dados URL-encoded, caso use esse método no frontend
 
-        console.log("Dados recebidos:", req.body);
+// Configuração do multer para armazenar os arquivos na pasta 'uploads/teses'
+const storage = multer.diskStorage({
+    destination: (req, file, cb) => {
+        const uploadDir = "uploads/teses";
+        if (!fs.existsSync(uploadDir)) {
+            fs.mkdirSync(uploadDir, { recursive: true });
+        }
+        cb(null, uploadDir); // Caminho onde o arquivo será salvo
+    },
+    filename: (req, file, cb) => {
+        // Manter o nome original do arquivo
+        const fileExtension = path.extname(file.originalname).toLowerCase();
+        const originalName = path.basename(file.originalname, fileExtension); // Nome original sem a extensão
+        const newFileName = `${originalName}${fileExtension}`; // Manter o nome original com a extensão
+        cb(null, newFileName);  // Usar o nome original do arquivo
+    }
+});
 
-        // --- Validação de Campos ---
-        const camposFaltando = [];
-        if (!userId) camposFaltando.push("userId");
-        if (!title) camposFaltando.push("title");
-        if (!status) camposFaltando.push("status");
-        if (!thesisFile) camposFaltando.push("thesisFile");
-        if (!fileName) camposFaltando.push("fileName");
+// Criação do middleware do multer
+const upload = multer({ storage: storage }).single('tese');  // 'tese' é o nome do campo no FormData
 
-        if (camposFaltando.length > 0) {
-            return res.status(400).json({
-                message: `Campos obrigatórios faltando: ${camposFaltando.join(", ")}`
-            });
+// Rota de upload da tese
+exports.upload_tese = (req, res) => {
+    // Primeiro, faça o processamento do multer
+    upload(req, res, (err) => {
+        if (err) {
+            console.error("Erro ao fazer upload:", err);
+            return res.status(500).json({ message: "Erro ao fazer upload: " + err.message });
         }
 
-        // Decodifica o arquivo Base64
-        const fileBuffer = Buffer.from(thesisFile, "base64");
+        const { userId } = req.body; // Agora deve ter o userId corretamente
+        const file = req.file;
 
-        // Define o nome do arquivo como id_tese (usando o userId ou outra lógica para id_tese)
-        const idTese = userId; // Substituir se `id_tese` for diferente de `userId`
-        const fileExtension = fileName.split('.').pop(); // Obtém a extensão do arquivo
-        const savedFileName = `${idTese}_tese.${fileExtension}`; // Nomeia o arquivo com id_tese
-        const filePath = `uploads/teses/${savedFileName}`;
-
-        // Salva o arquivo no sistema de arquivos apenas uma vez
-        const fs = require("fs");
-        if (!fs.existsSync("uploads/teses")) {
-            fs.mkdirSync("uploads/teses", { recursive: true });
+        if (!userId || !file) {
+            return res.status(400).json({ message: "userId e tese são obrigatórios." });
         }
-        fs.writeFileSync(filePath, fileBuffer);
 
-        console.log("Arquivo salvo em:", filePath);
+        console.log("Arquivo recebido:", file);
+        console.log("userId recebido:", userId); // Verifique se o userId chega aqui
 
-        // Atualizar a tese no banco de dados
-        const query = `
-            UPDATE tese
-            SET tema = ?, status = ?, data_submissao = ?, doc_tese = ?
-            WHERE id_aluno = ?
-        `;
-        const values = [
-            title,
-            status,
-            new Date().toISOString().slice(0, 19).replace("T", " "),
-            filePath,
-            userId,
-        ];
+        // Atualizar o caminho do PDF no banco de dados
+        const filePath = file.path;  // Caminho do arquivo no servidor
+        const updateQuery = "UPDATE tese SET doc_tese = ? WHERE id_aluno = ?";
 
-        db.query(query, values, (err, result) => {
+        db.query(updateQuery, [filePath, userId], (err, result) => {
             if (err) {
                 console.error("Erro ao atualizar a tese:", err);
                 return res.status(500).json({ message: "Erro ao atualizar a tese: " + err.message });
@@ -67,8 +276,89 @@ exports.update_tese = async (req, res) => {
 
             res.status(200).json({ message: "Tese atualizada com sucesso!" });
         });
-    } catch (err) {
-        console.error("Erro no processo de atualização da tese:", err);
-        res.status(500).json({ message: err.message });
-    }
+    });
 };
+
+
+
+exports.download_tese = (req, res) => {
+    const { userId } = req.params; // O id_user será passado via parâmetro de rota
+
+    // Verifique se o id_user foi fornecido
+    if (!userId) {
+        return res.status(400).json({ message: "id_user é obrigatório." });
+    }
+
+    // Consulta SQL para obter o caminho do arquivo baseado no userId
+    const query = "SELECT doc_tese FROM tese WHERE id_aluno = ?";
+
+    db.query(query, [userId], (err, result) => {
+        if (err) {
+            console.error("Erro ao consultar a base de dados:", err);
+            return res.status(500).json({ message: "Erro ao buscar o arquivo." });
+        }
+
+        // Verifique se o arquivo foi encontrado
+        if (result.length === 0) {
+            return res.status(404).json({ message: "Arquivo não encontrado para o aluno." });
+        }
+
+        const filePath = result[0].doc_tese;
+
+        // Verifique se o arquivo realmente existe no servidor
+        if (!fs.existsSync(filePath)) {
+            return res.status(404).json({ message: "Arquivo não encontrado no servidor." });
+        }
+
+        // Enviar o arquivo para o cliente para download
+        res.download(filePath, (err) => {
+            if (err) {
+                console.error("Erro ao enviar o arquivo:", err);
+                return res.status(500).json({ message: "Erro ao enviar o arquivo." });
+            }
+
+            console.log(`Arquivo enviado com sucesso: ${filePath}`);
+        });
+    });
+};
+
+// exports.download_tese = (req, res) => {
+//     const { userId } = req.params; // O id_user será passado via parâmetro de rota
+
+//     // Verifique se o id_user foi fornecido
+//     if (!userId) {
+//         return res.status(400).json({ message: "id_user é obrigatório." });
+//     }
+
+//     // Consulta SQL para obter o caminho do arquivo baseado no userId
+//     const query = "SELECT doc_tese FROM tese WHERE id_aluno = ?";
+
+//     db.query(query, [userId], (err, result) => {
+//         if (err) {
+//             console.error("Erro ao consultar a base de dados:", err);
+//             return res.status(500).json({ message: "Erro ao buscar o arquivo." });
+//         }
+
+//         // Verifique se o arquivo foi encontrado
+//         if (result.length === 0) {
+//             return res.status(404).json({ message: "Arquivo não encontrado para o aluno." });
+//         }
+
+//         const filePath = result[0].doc_tese;
+
+//         // Verifique se o arquivo realmente existe no servidor
+//         if (!fs.existsSync(filePath)) {
+//             return res.status(404).json({ message: "Arquivo não encontrado no servidor." });
+//         }
+
+//         // Enviar o arquivo para o cliente para download
+//         res.download(filePath, (err) => {
+//             if (err) {
+//                 console.error("Erro ao enviar o arquivo:", err);
+//                 return res.status(500).json({ message: "Erro ao enviar o arquivo." });
+//             }
+
+//             console.log(`Arquivo enviado com sucesso: ${filePath}`);
+//         });
+//     });
+// };

@@ -21,6 +21,6 @@ router.put("/submit-document", teseController.update_tese);
 router.get("/getUserPerfil/:userId", userController.getUserPerfil);
 
 router.get("/getInfoToCordenador", userController.getInfoToCordenador);
-
+router.get("/getInfoToOrientador", userController.getInfoToOrientador);
 
 module.exports = router;

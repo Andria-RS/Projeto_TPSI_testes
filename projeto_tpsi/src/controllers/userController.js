@@ -688,96 +688,51 @@ exports.getInfoToCordenador = (req, res) => {
 };
 
 
-// // Controlador para obter o ID do curso associado ao coordenador logado
-// exports.getCursoByCoordenador = (req, res) => {
-//   if (req.session.userId) {
-//     const userId = req.session.userId; // Obtém o ID do usuário logado da sessão
 
-//     // Query para buscar o curso associado ao coordenador logado
-//     const queryCurso = `SELECT id_curso FROM Users WHERE id_user = ?`;
+exports.getInfoToOrientador = (req, res) => {
+  if (req.session.userId) {
+    const userId = req.session.userId; // Obtém o ID do usuário logado da sessão
+    console.log("ID do usuário logado (orientador):", userId);
 
-//     db.query(queryCurso, [userId], (err, cursoResult) => {
-//       if (err) {
-//         return res
-//           .status(500)
-//           .json({ message: "Erro ao buscar o curso do coordenador.", error: err });
-//       }
+    // Busca os alunos orientados pelo orientador logado
+    const queryAlunos = ` 
+    SELECT 
+          u.id_user,
+          u.nome,
+          t.tema,
+          c.designacao AS nome_curso,
+          t.status AS estado_tese,
+          t.data_submissao AS data_defesa
+      FROM 
+          users u
+      LEFT JOIN 
+          tese t ON u.id_user = t.id_aluno
+      LEFT JOIN 
+          cursos c ON u.id_curso = c.id_curso
+      WHERE 
+          u.id_tipo_utilizador = 2 AND t.id_orientador = ?`;
 
-//       if (cursoResult.length === 0) {
-//         return res.status(404).json({ message: "Nenhum curso associado ao coordenador." });
-//       }
+    db.query(queryAlunos, [userId], (err, alunosResult) => {
+      if (err) {
+        console.error("Erro ao buscar os dados dos alunos:", err);
+        return res
+          .status(500)
+          .json({ message: "Erro ao buscar os dados dos alunos.", error: err });
+      }
 
-//       // Retorna o ID do curso encontrado
-//       const idCurso = cursoResult[0].id_curso;
-//       console.log("ID do curso associado:", idCurso);
+      // Formatar as datas no formato 'YYYY-MM-DD' caso necessário
+      alunosResult.forEach(aluno => {
+        if (aluno.data_defesa) {
+          aluno.data_defesa = aluno.data_defesa.toISOString().split('T')[0]; // Formata para 'YYYY-MM-DD'
+        }
+      });
 
-//       res.status(200).json({ id_curso: idCurso });
-//     });
-//   } else {
-//     res.status(401).json({ message: "Usuário não autenticado." });
-//   }
-// };
+      // Imprime os resultados no console
+      console.log("Resultados formatados da query:", alunosResult);
+      return res.status(200).json(alunosResult);
+    });
+  } else {
+    return res.status(401).json({ message: "Usuário não autenticado." });
+  }
+};
 
-
-
-// // Controlador para obter todos os utilizadores associados ao coordenador logado
-// exports.getInfoToCordenador = (req, res) => {
-//   if (req.session.userId) {
-
-//     const userId = req.session.userId; // Obtém o ID do usuário logado da sessão
-//     console.log("userId");
-//     console.log(userId);
-
-//     // Primeiro, obtemos o curso associado ao coordenador logado
-//     const queryCurso = `SELECT id_curso FROM Users WHERE id_user = ?`;
-
-//     db.query(queryCurso, [userId], (err, cursoResult) => {
-//       if (err) {
-//         return res
-//           .status(500)
-//           .json({ message: "Erro ao buscar o curso do coordenador.", error: err });
-//       }
-
-//       if (cursoResult.length === 0) {
-//         return res.status(404).json({ message: "Nenhum curso associado ao coordenador." });
-//       }
-
-//       const idCurso = getCursoByCoordenador();
-//       console.log("idCurso");
-//       console.log(idCurso);
-
-//       // Agora, buscamos os usuários do curso associado
-//       const query = `
-//         SELECT 
-//             u.id_user,
-//             u.nome,
-//             t.tema,
-//             o.nome AS nome_orientador,
-//             t.status AS estado_tese,
-//             t.data_submissao AS data_defesa,
-//             t.doc_tese AS documento_tese
-//         FROM 
-//             Users u
-//         JOIN 
-//             Tese t ON u.id_user = t.id_aluno
-//         LEFT JOIN 
-//             Users o ON t.id_orientador = o.id_user
-//         WHERE 
-//             u.id_tipo_utilizador = 2 AND u.id_curso = ?
-//       `;
-
-//       db.query(query, [idCurso], (err, results) => {
-//         if (err) {
-//           return res
-//             .status(500)
-//             .json({ message: "Erro ao buscar os dados dos utilizadores.", error: err });
-//         }
-//          // Imprime os resultados no console
-//        console.log("Resultados da query:", results);
-//         res.status(200).json(results);
-//       });
-//     });
-//   } else {
-//     res.status(401).json({ message: "Usuário não autenticado." });
-//   }
-// };

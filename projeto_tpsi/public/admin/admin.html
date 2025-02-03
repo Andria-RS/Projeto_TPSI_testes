@@ -56,6 +56,8 @@
         <!-- Linhas serão geradas dinamicamente -->
       </tbody>
     </table>
+    <div id="paginacao" class="mt-3 text-center"></div>
+
 
     <div class="modal fade" id="editModal" tabindex="-1" aria-labelledby="editModalLabel" aria-hidden="true">
       <div class="modal-dialog">
@@ -91,9 +93,9 @@
                 <div class="col-md-6">
                   <label for="editPasswordConfirm" class="form-label">Confirmar Palavra-passe:</label>
                   <div class="input-group">
-                    <input type="password" class="form-control" id="editPasswordConfirm"
+                    <input type="password" class="form-control" id="editPasswordCofirmacions"
                       placeholder="Confirme a nova palavra-passe introduzida" />
-                    <span class="input-group-text" onclick="togglePassword('editPasswordConfirm', 'eyeIcon2')"
+                    <span class="input-group-text" onclick="togglePassword('editPasswordCofirmacions', 'eyeIcon2')"
                       style="cursor: pointer;">
                       <i id="eyeIcon2" class="ri-eye-line"></i>
                     </span>
@@ -114,8 +116,11 @@
 
           <div class="modal-footer">
             <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancelar</button>
-            <button type="button" class="btn btn-dark" onclick="salvarEdicaoUsuario()">Salvar Alterações</button>
-          </div>
+            <!-- <button type="button" class="btn btn-dark" onclick="salvarEdicaoUsuario()">Salvar Alterações</button>
+              -->
+              <button type="button" class="btn btn-dark" onclick="setTimeout(salvarEdicaoUsuario, 100)">Salvar Alterações</button>
+
+            </div>
         </div>
       </div>
     </div>

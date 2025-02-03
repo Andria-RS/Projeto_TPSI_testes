@@ -253,7 +253,7 @@ exports.getUserById = (req, res) => {
 
 
 exports.edit_user = (req, res) => {
-  const { id_user, nome, contacto, email, password, curriculo, especialidade, id_polo,  tipo_User, data } = req.body;
+  const { id_user, nome, contacto, email, password } = req.body;
   console.log(req.body);
 
   if (!id_user) {
@@ -263,12 +263,12 @@ exports.edit_user = (req, res) => {
   const fieldsToUpdate = [
     { field: "nome", value: nome },
     { field: "contacto", value: contacto },
-    { field: "email", value: email },
-    { field: "curriculo", value: curriculo },
-    { field: "especialidade", value: especialidade },
-    { field: "data_registo", value: data },
-    { field: "id_polo", value: id_polo },
-    { field: "id_tipo_utilizador", value:  tipo_User }
+    { field: "email", value: email }
+    //{ field: "curriculo", value: curriculo },
+    //{ field: "especialidade", value: especialidade },
+   // { field: "data_registo", value: data },
+    //{ field: "id_polo", value: id_polo },
+    //{ field: "id_tipo_utilizador", value:  tipo_User }
   ];
 
   if (password) {
@@ -551,70 +551,6 @@ exports.getUserPerfil = (req, res) => {
   }
 };
 
-// // Controlador para obter todos os utilizadores associados ao coordenador logado
-// exports.getInfoToCordenador = (req, res) => {
-//   if (req.session.userId) {
-//     const userId = req.session.userId; // Obtém o ID do usuário logado da sessão
-//     console.log("ID do usuário logado (coordenador):", userId);
-
-//     // Primeiro, obtemos o curso associado ao coordenador logado
-//     const queryCurso = `
-//       SELECT id_curso 
-//       FROM cursos 
-//       WHERE id_coordenador_curso = ?`;
-
-//     db.query(queryCurso, [userId], (err, cursoResult) => {
-//       if (err) {
-//         console.error("Erro ao buscar o curso do coordenador:", err);
-//         return res
-//           .status(500)
-//           .json({ message: "Erro ao buscar o curso do coordenador.", error: err });
-//       }
-
-//       if (cursoResult.length === 0) {
-//         return res.status(404).json({ message: "Nenhum curso associado ao coordenador." });
-//       }
-
-//       // Obtém o ID do curso
-//       const idCurso = cursoResult[0].id_curso;
-//       console.log("ID do curso associado ao coordenador:", idCurso);
-
-//       // Agora, buscamos os alunos associados ao mesmo curso
-//       const queryAlunos = `
-//         SELECT 
-//             u.id_user,
-//             u.nome,
-//             t.tema,
-//             o.nome AS nome_orientador,
-//             t.status AS estado_tese,
-//            DATE(t.data_submissao) AS data_defesa,
-//             t.doc_tese AS documento_tese
-//         FROM 
-//             Users u
-//         LEFT JOIN 
-//             Tese t ON u.id_user = t.id_aluno
-//         LEFT JOIN 
-//             Users o ON t.id_orientador = o.id_user
-//         WHERE 
-//             u.id_tipo_utilizador = 2 AND u.id_curso = ?`;
-
-//       db.query(queryAlunos, [idCurso], (err, alunosResult) => {
-//         if (err) {
-//           console.error("Erro ao buscar os dados dos alunos:", err);
-//           return res
-//             .status(500)
-//             .json({ message: "Erro ao buscar os dados dos alunos.", error: err });
-//         }
-
-//         // Imprime os resultados no console
-//         console.log("Resultados da query:", alunosResult);
-//         return res.status(200).json(alunosResult);
-//       });
-//     });
-//   } else {
-//     return res.status(401).json({ message: "Usuário não autenticado." });
-//   }
-// };
 
 exports.getInfoToCordenador = (req, res) => {
   if (req.session.userId) {
@@ -739,49 +675,6 @@ exports.getInfoToOrientador = (req, res) => {
 
 
 
-// exports.add_juri = (req, res) => {
-//   // Obter os dados do formData
-//   const { juryName, juryDefenseNumber } = req.body; // Os dados que vêm do FormData (nome do juri e número da defesa)
-
-//   // Passo 1: Buscar o id do usuário com o nome fornecido (juryName)
-//   connection.query(
-//     'SELECT id_user FROM users WHERE nome = ?',
-//     [juryName], // O nome que vem do formulário
-//     (err, results) => {
-//       if (err) {
-//         // Se houver erro na consulta ao banco, retornamos uma mensagem de erro
-//         console.error('Erro ao consultar a tabela user:', err);
-//         return res.status(500).json({ message: 'Erro ao consultar o usuário' });
-//       }
-
-//       if (results.length === 0) {
-//         // Se não encontrar nenhum usuário com esse nome
-//         return res.status(404).json({ message: 'Usuário não encontrado' });
-//       }
-
-//       // Passo 2: Pegar o id do usuário
-//       const userId = results[0].id;
-
-//       // Passo 3: Inserir os dados na tabela juri
-//       connection.query(
-//         'INSERT INTO juri (user_id, id_defesa) VALUES (?, ?)',
-//         [userId, juryDefenseNumber], // Passamos o id do usuário e o número da defesa
-//         (err, results) => {
-//           if (err) {
-//             // Se houver erro ao inserir na tabela juri
-//             console.error('Erro ao inserir na tabela juri:', err);
-//             return res.status(500).json({ message: 'Erro ao adicionar o juri' });
-//           }
-
-//           // Se tudo correr bem, retornamos uma resposta de sucesso
-//           return res.status(201).json({
-//             message: 'Juri adicionado com sucesso!',
-//             juriId: results.insertId // Retorna o ID do juri inserido (se necessário)
-//           });
-//         }
-//       );
-//     })
-//     }
 exports.add_juri = (req, res) => {
   console.log("Entrei na API ---------------------");
 

@@ -736,3 +736,97 @@ exports.getInfoToOrientador = (req, res) => {
   }
 };
 
+
+
+
+// exports.add_juri = (req, res) => {
+//   // Obter os dados do formData
+//   const { juryName, juryDefenseNumber } = req.body; // Os dados que vêm do FormData (nome do juri e número da defesa)
+
+//   // Passo 1: Buscar o id do usuário com o nome fornecido (juryName)
+//   connection.query(
+//     'SELECT id_user FROM users WHERE nome = ?',
+//     [juryName], // O nome que vem do formulário
+//     (err, results) => {
+//       if (err) {
+//         // Se houver erro na consulta ao banco, retornamos uma mensagem de erro
+//         console.error('Erro ao consultar a tabela user:', err);
+//         return res.status(500).json({ message: 'Erro ao consultar o usuário' });
+//       }
+
+//       if (results.length === 0) {
+//         // Se não encontrar nenhum usuário com esse nome
+//         return res.status(404).json({ message: 'Usuário não encontrado' });
+//       }
+
+//       // Passo 2: Pegar o id do usuário
+//       const userId = results[0].id;
+
+//       // Passo 3: Inserir os dados na tabela juri
+//       connection.query(
+//         'INSERT INTO juri (user_id, id_defesa) VALUES (?, ?)',
+//         [userId, juryDefenseNumber], // Passamos o id do usuário e o número da defesa
+//         (err, results) => {
+//           if (err) {
+//             // Se houver erro ao inserir na tabela juri
+//             console.error('Erro ao inserir na tabela juri:', err);
+//             return res.status(500).json({ message: 'Erro ao adicionar o juri' });
+//           }
+
+//           // Se tudo correr bem, retornamos uma resposta de sucesso
+//           return res.status(201).json({
+//             message: 'Juri adicionado com sucesso!',
+//             juriId: results.insertId // Retorna o ID do juri inserido (se necessário)
+//           });
+//         }
+//       );
+//     })
+//     }
+exports.add_juri = (req, res) => {
+  console.log("Entrei na API ---------------------");
+
+  // Captura os dados do JSON enviado
+  const { juryName, juryDefenseNumber } = req.body;
+
+  // Verifica se os campos foram recebidos corretamente
+  if (!juryName || !juryDefenseNumber) {
+      return res.status(400).json({ success: false, message: "Dados incompletos" });
+  }
+
+  // Buscar o ID do usuário pelo nome
+  db.query(
+      "SELECT id_user FROM users WHERE nome = ?",
+      [juryName],
+      (err, results) => {
+          if (err) {
+              console.error("Erro ao consultar a tabela users:", err);
+              return res.status(500).json({ success: false, message: "Erro ao consultar o usuário" });
+          }
+
+          if (results.length === 0) {
+              return res.status(404).json({ success: false, message: "Usuário não encontrado" });
+          }
+
+          // Pega o ID do usuário
+          const userId = results[0].id_user;
+
+          // Inserir os dados na tabela juri
+          db.query(
+              "INSERT INTO juri (id_user, id_defesa) VALUES (?, ?)",
+              [userId, juryDefenseNumber],
+              (err, results) => {
+                  if (err) {
+                      console.error("Erro ao inserir na tabela juri:", err);
+                      return res.status(500).json({ success: false, message: "Erro ao adicionar o juri" });
+                  }
+
+                  return res.status(201).json({
+                      success: true,
+                      message: "Juri adicionado com sucesso!",
+                      juriId: results.insertId
+                  });
+              }
+          );
+      }
+  );
+};

@@ -195,10 +195,7 @@ function getUsersCordenador() {
             usuariosCordenador = data.data || data || [];
             popularTabelaCordenador(usuariosCordenador);
         })
-        .catch(error => {
-            console.error("Erro ao buscar os dados para Coordenador:", error);
-            alert("Não foi possível carregar os dados da tabela de Coordenador.");
-        });
+       
 }
 
 // Função para preencher a tabela de Coordenador

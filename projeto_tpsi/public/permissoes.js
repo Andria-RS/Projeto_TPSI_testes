@@ -144,13 +144,13 @@ function verificarPermissoesCards() {
             } else {
                 // Define quais classes cada tipo de usuário pode ver nos cards
                 const permissoes = {
-                    4: ["cordenador", "juri"], // Coordenador
-                    3: ["orientador", "juri"], // Orientador
-                    7: ["gac"],
-                    8: ["sa"],
-                    6: ["juri"],
-                    5: ["juri"],
-                    2: ["aluno"]
+                    4: ["cordenador", "juri", "todos"], // Coordenador
+                    3: ["orientador", "juri", "todos"], // Orientador
+                    7: ["gac", "todos"],
+                    8: ["sa", "todos"],
+                    6: ["juri", "todos"],
+                    5: ["juri", "todos"],
+                    2: ["aluno", "todos"]
                 };
 
                 // Pega as classes permitidas para esse tipo de usuário

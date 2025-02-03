@@ -1,36 +1,3 @@
-// console.log("Script carregado corretamente!");
-
-
-// function baixarTemplate() {
-//     window.location.href = '/relatorios/download-template';
-// }
-
-// function fazerUpload() {
-//     const fileInput = document.getElementById('fileInput');
-//     const numDefesa = document.getElementById('numDefesa').value;
-
-//     if (fileInput.files.length === 0) {
-//         alert('Selecione um arquivo para enviar.');
-//         return;
-//     }
-//     if (!numDefesa) {
-//         alert('Preencha o Número de Defesa.');
-//         return;
-//     }
-
-//     const formData = new FormData();
-//     formData.append('file', fileInput.files[0]);
-//     formData.append('numDefesa', numDefesa);
-
-//     fetch('/relatorios/upload-relatorio', {
-//         method: 'POST',
-//         body: formData,
-//         credentials: 'include'  // Para enviar cookies/sessão
-//     })
-//     .then(response => response.json())
-//     .then(data => alert(data.message))
-//     .catch(error => console.error('Erro ao enviar:', error));
-// }
 
 window.baixarTemplate = function() {
     
@@ -66,3 +33,5 @@ window.fazerUpload = function() {
     .then(data => alert(data.message))
     .catch(error => console.error('Erro ao enviar:', error));
 };
+
+

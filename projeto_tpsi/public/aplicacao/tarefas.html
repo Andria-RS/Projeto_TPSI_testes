@@ -97,7 +97,7 @@
       </div>
 
 
-      <div class="col-md-6 form_Juri">
+      <!-- <div class="col-md-6 form_Juri">
         <div class="card mb-3 juri" onclick="openModal('ataModal')">
           <div class="card-header">
             <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
@@ -112,7 +112,7 @@
               Clique para submeter a ata.</button>
           </div>
         </div>
-      </div>
+      </div> -->
 
       
 
@@ -362,11 +362,33 @@
           </div>
             </div>
 
-
+            <div class="modal fade" id="ataModal" tabindex="-1" aria-labelledby="ataModalLabel" aria-hidden="true">
+              <div class="modal-dialog">
+                <div class="modal-content">
+                  <div class="modal-header">
+                    <h5 class="modal-title">Submeter Ata</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Fechar"></button>
+                  </div>
+          
+                   <div>
+                      
+                      <p>Submeta abaixo a atada da Avaliação da Defesa</p>
+          
+                    
+                      <input type="file" id="fileInputata"><br>
+                      <label for="numDefesa">Número da Tese:</label>
+                      <input type="text" id="numDefesaata"><br>
+                      <button type="button" class="btn btn-dark" onclick="fazerUploadAta()">Enviar Relatório</button>
+                
+                    <div>
+                </div>
+              </div>
+                </div> 
+          
 
         <footer class="bg-light text-center py-3 fixed-bottom">
           <div class="container">
-            <p class="mb-1">&copy; Instituto Politécnico de Viana do Castelo • Gestor de Teses • 2024</p>
+            <p class="mb-1">&copy; Instituto Politécnico de Viana do Castelo • Master's Theses • 2024/25</p>
           </div>
         </footer>
 

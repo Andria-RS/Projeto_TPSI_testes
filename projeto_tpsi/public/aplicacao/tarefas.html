@@ -313,54 +313,41 @@
         </div>
       </div>
     </div>
-  </div>
+      </div>
 
     <!-- Criar Juri -->
-  <div id="criarJuriModal" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
-            aria-hidden="true">
-            <div class=" modal-dialog modal-lg">
-              <div class="modal-content">
-                <div class=" modal-header">
-                  <h5 class="modal-title" id="exampleModalLabel">Adicionar Juri</h5>
-                  <button type="button" class="btn-close" data-dismiss="modal" aria-label="Close"></button>
+    <div id="criarJuriModal" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+        aria-hidden="true">
+      <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title" id="exampleModalLabel">Adicionar Juri</h5>
+            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Fechar"></button>
+          </div>
+
+          <form id="form_Juri" onsubmit="adicionarJuri(event)">
+
+            <div class="modal-body">
+              <div class="row g-3">
+                <div class="col-md-6">
+                  <label for="juryName">Nome Juri</label>
+                  <input type="text" class="form-control" id="juryName" placeholder="Introduza o nome do Juri" required>
+                </div>
+
+                <div class="col-md-6">
+                  <label for="juryDefenseNumber">Número da Defesa</label>
+                  <input type="number" class="form-control" id="juryDefenseNumber" placeholder="Introduza o número da defesa" required>
+                </div>
+
+                <div class="modal-footer">
+                  <button type="submit" class="btn btn-dark">Adicionar ao Juri</button>
                 </div>
               </div>
-
-              <form id="form_Juri" onsubmit="">
-                <div class="modal-body">
-                  <div class="row g-3">
-
-                    <div class="col-md-6">
-                      <label for="juryName">Nome Juri</label>
-                      <input type="text" class="form-control" id="juryName" placeholder="Introduza o nome do Juri">
-                    </div>
-
-                    <div class="col-md-6">
-                      <label for="juryMembers">Membro Juri</label>
-                      <textarea type="text" class="form-control" id="juryMembers"
-                        placeholder="Introduza os membros do Juri"></textarea>
-                    </div>
-
-                    <div class="col-md-6">
-                      <label for="juryDate">Data</label>
-                      <input type="date" class="form-control" id="juryDate">
-                    </div>
-
-                    <div class="col-md-6">
-                      <label for="juryTime">Hora</label>
-                      <input type="time" class="form-control" id="juryTime">
-                    </div>
-
-                    <div class="modal-footer">
-                      <button type="submit" class="btn btn-dark">Adicionar Juri</button>
-                    </div>
-
-                  </div>
-                </div>
-              </form>
             </div>
+          </form>
         </div>
-
+      </div>
+    </div>
 
 
         <footer class="bg-light text-center py-3 fixed-bottom">
@@ -380,6 +367,7 @@
         <script src="../auxiliador\auxiliador.js"></script>
         <script src="../auxiliador/auxiliador_submissoes.js"></script>
         <script src="../auxiliador\auxiliador_email.js"></script>
+        <script src="../auxiliador\auxiliador_juri.js"></script
 
 </body>
 

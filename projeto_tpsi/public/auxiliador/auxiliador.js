@@ -471,8 +471,8 @@ function renderTabela() {
             <td>${usuario.Tipo_utilizador}</td>
             <td>${usuario.Polo}</td>
             <td>
-                <button class="btn btn-warning btn-sm" data-toggle="modal" data-target="#editModal" onclick="editarUsuario(${usuario.id_user})">Editar</button>
-                <button class="btn btn-danger btn-sm" data-toggle="modal" data-target="#deleteModal" onclick="setUserIdToDelete(${usuario.id_user})">Excluir</button>
+                <button class="btn btn-warning btn-sm" data-toggle="modal" data-target="#editModal" onclick="editarUsuario(${usuario.id_user})"><i class="bi bi-pencil-square"></i>Editar</button>
+                <button class="btn btn-danger btn-sm" data-toggle="modal" data-target="#deleteModal" onclick="setUserIdToDelete(${usuario.id_user})"><i class="bi bi-trash3"></i>Excluir</button>
             </td>
         `;
         tbody.appendChild(tr);
